@@ -1,0 +1,19 @@
+
+.main{
+  padding-left:256px;
+  @include transition(padding-left .15s ease);
+}
+.menu {
+  width:256px;
+  @include transition(left .15s ease);
+}
+.main-inner {
+  max-width:1200px;
+  padding:40px;
+}
+body.menu-closed {
+  .side-menu {left:-256px;}
+  .facility--main {padding-left: 0;}
+  .facility--main-inner { margin:0 auto;}
+  .facility--header { padding-left:0;}
+}

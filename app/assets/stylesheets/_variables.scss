@@ -1,0 +1,84 @@
+$neutral-10:   #102A43;
+$neutral-9:   #243B53;
+$neutral-8:   #334E68;
+$neutral-7:   #486581;
+$neutral-6:   #627D98;
+$neutral-5:   #829AB1;
+$neutral-4:   #9FB3C8;
+$neutral-3:   #BCCCDC;
+$neutral-2:   #D9E2EC;
+$neutral-1:   #F0F4F8;
+
+
+$white:    #fff !default;
+$gray-100: $neutral-1 !default;
+$gray-200: $neutral-2 !default;
+$gray-300: $neutral-3 !default;
+$gray-400: $neutral-4 !default;
+$gray-500: $neutral-5 !default;
+$gray-600: $neutral-6 !default;
+$gray-700: $neutral-7 !default;
+$gray-800: $neutral-8 !default;
+$gray-900: $neutral-9 !default;
+$black:    $neutral-10 !default;
+
+
+$blue:            #17a2b8 !default;
+$indigo:          #6610f2 !default;
+$purple:          #6f42c1 !default;
+$pink:            #e83e8c !default;
+$red:             #e74c3c !default;
+$orange:          #e67e22 !default;
+$yellow:          #f1c40f !default;
+$green:           #3EBD93 !default;
+$cyan:            #17a2b8 !default;
+
+
+$primary:         #1992D4 !default;
+$secondary:       #34495e !default;
+$success:         $green !default;
+$info:            $blue !default;
+$warning:         $yellow !default;
+$danger:          $red !default;
+$light:           #ffffff !default;
+
+$body-bg:         #F0F4F8 !default;
+$body-color:      $neutral-7 !default;
+$text-muted:      $gray-600 !default;
+$text-muted--card: #8898aa;
+$warning-dark:    #856404;
+
+$border-radius:   .25em;
+$border-radius--sm:   .15em;
+$border-color:    $gray-200 !default;
+$box-shadow:      0 2px 5px 0 rgba(51,51,79,.07);
+$box-shadow--lg:  0 3px 6px hsla(120, 0, 0%, 0.15), 0 2px 4px hsla(120, 0, 0%, 0.12);
+$box-shadow--xlg:  0 10px 20px hsla(120, 0, 0%, 0.15), 0 3px 6px hsla(120, 0, 0%, 0.10);
+$box-shadow--xxlg:  0 15px 25px hsla(120, 0, 0%, 0.15), 0 5px 10px hsla(120, 0, 0%, 0.15);
+
+
+$font-family-sans-serif:      proxima-nova, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:            $font-family-sans-serif !default;
+
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:                ($font-size-base * 1.25) !default;
+$font-size-sm:                ($font-size-base * .875) !default;
+
+$h1-font-size:                $font-size-base * 2.5 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.75 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;
+
+$input-bg:                              #f2f3f6 !default;
+$input-color:                           #627D98 !default;
+$input-border-color:                    transparent !default;
+$input-border-width:                    0px !default;
+$input-focus-bg:                        $input-bg !default;
+
+$input-placeholder-color:               #9FB3C8 !default;
+$input-plaintext-color:                 $body-color !default;
+$input-group-addon-bg:                 $gray-300;
+$custom-file-height:         calc(2.875rem + 0px);
