@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_152628) do
+ActiveRecord::Schema.define(version: 2018_12_14_153229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 2018_12_14_152628) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_colors_on_brand_id"
+  end
+
+  create_table "components", force: :cascade do |t|
+    t.bigint "brand_id"
+    t.string "name"
+    t.text "description"
+    t.text "markup"
+    t.text "style"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_components_on_brand_id"
   end
 
   create_table "fonts", force: :cascade do |t|
@@ -69,6 +80,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_152628) do
 
   add_foreign_key "brands", "accounts"
   add_foreign_key "colors", "brands"
+  add_foreign_key "components", "brands"
   add_foreign_key "fonts", "brands"
   add_foreign_key "spacers", "brands"
 end
