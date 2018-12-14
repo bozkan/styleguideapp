@@ -7,7 +7,12 @@ Rails.application.routes.draw do
 
   # Tenant
   constraints(SubDomainConstraint) do
-    get '/'   => 'brands#show', as: :brand_root
+    get '/'   => 'colors#index', as: :brand_root
+
+    resources :colors
+    resources :fonts
+    resources :spacers
+
   end
 
   root 'home#index'

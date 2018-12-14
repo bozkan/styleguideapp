@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: one
+  name: MyString
+  size: 9.99
+  line_height: 9.99
+  weight: 1
+
+two:
+  brand: two
+  name: MyString
+  size: 9.99
+  line_height: 9.99
+  weight: 1

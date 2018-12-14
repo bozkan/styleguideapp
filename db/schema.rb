@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_131336) do
+ActiveRecord::Schema.define(version: 2018_12_14_152628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,33 @@ ActiveRecord::Schema.define(version: 2018_12_14_131336) do
     t.index ["subdomain"], name: "index_brands_on_subdomain", unique: true
   end
 
+  create_table "colors", force: :cascade do |t|
+    t.bigint "brand_id"
+    t.string "hex", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_colors_on_brand_id"
+  end
+
+  create_table "fonts", force: :cascade do |t|
+    t.bigint "brand_id"
+    t.string "name"
+    t.decimal "size"
+    t.decimal "line_height"
+    t.integer "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_fonts_on_brand_id"
+  end
+
+  create_table "spacers", force: :cascade do |t|
+    t.bigint "brand_id"
+    t.integer "size", default: 4, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_spacers_on_brand_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "first_name"
@@ -41,4 +68,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_131336) do
   end
 
   add_foreign_key "brands", "accounts"
+  add_foreign_key "colors", "brands"
+  add_foreign_key "fonts", "brands"
+  add_foreign_key "spacers", "brands"
 end

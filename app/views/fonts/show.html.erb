@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @font.brand %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @font.name %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @font.size %>
+</p>
+
+<p>
+  <strong>Line height:</strong>
+  <%= @font.line_height %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @font.weight %>
+</p>
+
+<%= link_to 'Edit', edit_font_path(@font) %> |
+<%= link_to 'Back', fonts_path %>

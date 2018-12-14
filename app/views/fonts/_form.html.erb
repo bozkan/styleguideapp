@@ -1,0 +1,17 @@
+
+<%= simple_form_for(@font) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.association :brand %>
+    <%= f.input :name %>
+    <%= f.input :size %>
+    <%= f.input :line_height %>
+    <%= f.input :weight %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
