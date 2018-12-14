@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   # Super Tenant
   constraints(:host => (Rails.env.production? ? 'styleguides.app' : 'lvh.me' ) ) do
 
@@ -6,9 +8,11 @@ Rails.application.routes.draw do
 
   # Tenant
   constraints(SubDomainConstraint) do
-    get '/'   => 'colors#index', as: :brand_root
+    get '/'   => 'brands#show', as: :brand_root
 
+    resources :logos
     resources :colors
+    resources :color_categories
     resources :fonts
     resources :spacers
     resources :components

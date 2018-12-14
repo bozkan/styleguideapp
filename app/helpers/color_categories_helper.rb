@@ -1,0 +1,2 @@
+module ColorCategoriesHelper
+end

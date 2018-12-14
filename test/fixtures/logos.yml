@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: one
+  file_data: MyText
+  name: MyString
+  description: MyText
+
+two:
+  brand: two
+  file_data: MyText
+  name: MyString
+  description: MyText

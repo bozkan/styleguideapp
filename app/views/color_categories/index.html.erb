@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Color Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @color_categories.each do |color_category| %>
+      <tr>
+        <td><%= color_category.brand %></td>
+        <td><%= color_category.name %></td>
+        <td><%= link_to 'Show', color_category %></td>
+        <td><%= link_to 'Edit', edit_color_category_path(color_category) %></td>
+        <td><%= link_to 'Destroy', color_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Color Category', new_color_category_path %>

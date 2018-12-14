@@ -1,3 +1,24 @@
+$spacer: 1.5rem !default;
+
+$spacer-4: 0.25rem;
+$spacer-8: 0.5rem;
+$spacer-12: 0.75rem;
+$spacer-16: 1rem;
+$spacer-24: $spacer;
+$spacer-32: 2rem;
+$spacer-48: 3rem;
+$spacer-64: 4rem;
+$spacer-96: 6rem;
+$spacer-128: 8rem;
+$spacer-192: 12rem;
+$spacer-256: 16rem;
+$spacer-384: 24rem;
+$spacer-512: 32rem;
+$spacer-640: 40rem;
+$spacer-768: 48rem;
+
+$spacer-24: $spacer;
+
 $neutral-10:   #102A43;
 $neutral-9:   #243B53;
 $neutral-8:   #334E68;
@@ -51,11 +72,11 @@ $warning-dark:    #856404;
 $border-radius:   .25em;
 $border-radius--sm:   .15em;
 $border-color:    $gray-200 !default;
-$box-shadow:      0 2px 5px 0 rgba(51,51,79,.07);
-$box-shadow--lg:  0 3px 6px hsla(120, 0, 0%, 0.15), 0 2px 4px hsla(120, 0, 0%, 0.12);
-$box-shadow--xlg:  0 10px 20px hsla(120, 0, 0%, 0.15), 0 3px 6px hsla(120, 0, 0%, 0.10);
-$box-shadow--xxlg:  0 15px 25px hsla(120, 0, 0%, 0.15), 0 5px 10px hsla(120, 0, 0%, 0.15);
-
+$box-shadow:      0 1px 3px hsla(120,0,0,0.06),0 1px 2px hsla(120,0,0,0.12);
+$box-shadow-2:    0 3px 6px hsla(120,0,0,0.15),0 2px 4px hsla(120,0,0,0.12);
+$box-shadow-3:    0 10px 20px hsla(120, 0, 0%, 0.15), 0 3px 6px hsla(120, 0, 0%, 0.10);
+$box-shadow-4:    0 15px 25px hsla(120, 0, 0%, 0.15), 0 5px 10px hsla(120, 0, 0%, 0.15);
+$box-shadow-5:    0 20px 40px hsla(120,0,0%,0.2);
 
 $font-family-sans-serif:      proxima-nova, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
@@ -72,8 +93,8 @@ $h4-font-size:                $font-size-base * 1.5 !default;
 $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
 
-$input-bg:                              #f2f3f6 !default;
-$input-color:                           #627D98 !default;
+$input-bg:                              $neutral-1 !default;
+$input-color:                           $neutral-7 !default;
 $input-border-color:                    transparent !default;
 $input-border-width:                    0px !default;
 $input-focus-bg:                        $input-bg !default;

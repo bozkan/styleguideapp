@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_153229) do
+ActiveRecord::Schema.define(version: 2018_12_14_155913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2018_12_14_153229) do
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_brands_on_account_id"
     t.index ["subdomain"], name: "index_brands_on_subdomain", unique: true
+  end
+
+  create_table "color_categories", force: :cascade do |t|
+    t.bigint "brand_id"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_color_categories_on_brand_id"
   end
 
   create_table "colors", force: :cascade do |t|
@@ -61,6 +69,16 @@ ActiveRecord::Schema.define(version: 2018_12_14_153229) do
     t.index ["brand_id"], name: "index_fonts_on_brand_id"
   end
 
+  create_table "logos", force: :cascade do |t|
+    t.bigint "brand_id"
+    t.text "file_data"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_logos_on_brand_id"
+  end
+
   create_table "spacers", force: :cascade do |t|
     t.bigint "brand_id"
     t.integer "size", default: 4, null: false
@@ -79,8 +97,10 @@ ActiveRecord::Schema.define(version: 2018_12_14_153229) do
   end
 
   add_foreign_key "brands", "accounts"
+  add_foreign_key "color_categories", "brands"
   add_foreign_key "colors", "brands"
   add_foreign_key "components", "brands"
   add_foreign_key "fonts", "brands"
+  add_foreign_key "logos", "brands"
   add_foreign_key "spacers", "brands"
 end

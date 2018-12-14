@@ -8,8 +8,8 @@
   @include transition(left .15s ease);
 }
 .main-inner {
-  max-width:1200px;
-  padding:40px;
+  max-width:900px;
+  padding:$spacer-48;
 }
 body.menu-closed {
   .side-menu {left:-256px;}
