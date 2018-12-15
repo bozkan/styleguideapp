@@ -1,34 +1,50 @@
-$spacer: 1.5rem !default;
+$spacer:          1.5rem !default;
 
-$spacer-4: 0.25rem;
-$spacer-8: 0.5rem;
-$spacer-12: 0.75rem;
-$spacer-16: 1rem;
-$spacer-24: $spacer;
-$spacer-32: 2rem;
-$spacer-48: 3rem;
-$spacer-64: 4rem;
-$spacer-96: 6rem;
-$spacer-128: 8rem;
-$spacer-192: 12rem;
-$spacer-256: 16rem;
-$spacer-384: 24rem;
-$spacer-512: 32rem;
-$spacer-640: 40rem;
-$spacer-768: 48rem;
+$spacer-4:        0.25rem;
+$spacer-8:        0.5rem;
+$spacer-12:       0.75rem;
+$spacer-16:       1rem;
+$spacer-24:       $spacer;
+$spacer-32:       2rem;
+$spacer-48:       3rem;
+$spacer-64:       4rem;
+$spacer-96:       6rem;
+$spacer-128:      8rem;
+$spacer-192:      12rem;
+$spacer-256:      16rem;
+$spacer-384:      24rem;
+$spacer-512:      32rem;
+$spacer-640:      40rem;
+$spacer-768:      48rem;
 
-$spacer-24: $spacer;
+$neutral-10:      #102A43;
+$neutral-9:       #243B53;
+$neutral-8:       #334E68;
+$neutral-7:       #486581;
+$neutral-6:       #627D98;
+$neutral-5:       #829AB1;
+$neutral-4:       #9FB3C8;
+$neutral-3:       #BCCCDC;
+$neutral-2:       #D9E2EC;
+$neutral-1:       #F0F4F8;
 
-$neutral-10:   #102A43;
-$neutral-9:   #243B53;
-$neutral-8:   #334E68;
-$neutral-7:   #486581;
-$neutral-6:   #627D98;
-$neutral-5:   #829AB1;
-$neutral-4:   #9FB3C8;
-$neutral-3:   #BCCCDC;
-$neutral-2:   #D9E2EC;
-$neutral-1:   #F0F4F8;
+$font-size-12:    0.75rem;
+$font-size-14:    0.875rem;
+$font-size-16:    1rem;
+$font-size-18:    1.125rem;
+$font-size-20:    1.25rem;
+$font-size-24:    1.5rem;
+$font-size-32:    2rem;
+$font-size-48:    3rem;
+
+$line-height-12:    0.75rem;
+$line-height-14:    0.875rem;
+$line-height-16:    1rem;
+$line-height-18:    1.125rem;
+$line-height-20:    1.25rem;
+$line-height-24:    1.5rem;
+$line-height-32:    2rem;
+$line-height-48:    3rem;
 
 
 $white:    #fff !default;
@@ -64,7 +80,7 @@ $danger:          $red !default;
 $light:           #ffffff !default;
 
 $body-bg:         #F0F4F8 !default;
-$body-color:      $neutral-7 !default;
+$body-color:      $neutral-8 !default;
 $text-muted:      $gray-600 !default;
 $text-muted--card: #8898aa;
 $warning-dark:    #856404;
@@ -73,6 +89,7 @@ $border-radius:   .25em;
 $border-radius--sm:   .15em;
 $border-color:    $gray-200 !default;
 $box-shadow:      0 1px 3px hsla(120,0,0,0.06),0 1px 2px hsla(120,0,0,0.12);
+$box-shadow-1:    $box-shadow;
 $box-shadow-2:    0 3px 6px hsla(120,0,0,0.15),0 2px 4px hsla(120,0,0,0.12);
 $box-shadow-3:    0 10px 20px hsla(120, 0, 0%, 0.15), 0 3px 6px hsla(120, 0, 0%, 0.10);
 $box-shadow-4:    0 15px 25px hsla(120, 0, 0%, 0.15), 0 5px 10px hsla(120, 0, 0%, 0.15);
@@ -82,16 +99,17 @@ $font-family-sans-serif:      proxima-nova, sans-serif, "Apple Color Emoji", "Se
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 
-$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-base:              $font-size-20 !default; // Assumes the browser default, typically `16px`
 $font-size-lg:                ($font-size-base * 1.25) !default;
 $font-size-sm:                ($font-size-base * .875) !default;
 
-$h1-font-size:                $font-size-base * 2.5 !default;
-$h2-font-size:                $font-size-base * 2 !default;
-$h3-font-size:                $font-size-base * 1.75 !default;
-$h4-font-size:                $font-size-base * 1.5 !default;
-$h5-font-size:                $font-size-base * 1.25 !default;
+$h1-font-size:                $font-size-base * 2.25 !default;
+$h2-font-size:                $font-size-base * 1.75 !default;
+$h3-font-size:                $font-size-base * 1.5 !default;
+$h4-font-size:                $font-size-base * 1.25 !default;
+$h5-font-size:                $font-size-base * 1 !default;
 $h6-font-size:                $font-size-base !default;
+
 
 $input-bg:                              $neutral-1 !default;
 $input-color:                           $neutral-7 !default;
