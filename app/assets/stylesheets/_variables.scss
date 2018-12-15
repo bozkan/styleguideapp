@@ -110,6 +110,12 @@ $h4-font-size:                $font-size-base * 1.25 !default;
 $h5-font-size:                $font-size-base * 1 !default;
 $h6-font-size:                $font-size-base !default;
 
+$table-cell-padding:   15px !default;
+$table-border-width:  0px !default;
+$table-border-color: transparent !default;
+$table-bg:         white !default;
+$table-accent-bg:  $neutral-1;
+$table-hover-bg:   $neutral-1;
 
 $input-bg:                              $neutral-1 !default;
 $input-color:                           $neutral-7 !default;

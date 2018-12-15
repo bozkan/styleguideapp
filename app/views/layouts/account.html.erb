@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <div class="sticky-top bg-white px-3 py-2 box-shadow-1">
+    <div class="sticky-top px-3 py-2 border-bottom transparent-header mb-4">
       <div class="container md d-flex align-items-center">
         <img src="https://d28lxayvntpz3s.cloudfront.net/site-assets/logos/sg-logo.png" style="max-width:175px;">
         <ul class="nav ml-auto mt-0">
@@ -34,7 +34,7 @@
         </ul>
       </div>
     </div>
-    <%= yield %>
+    <main class="container"><%= yield %></main>
     <%= render 'partials/notice' %>
   </body>
 </html>

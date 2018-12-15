@@ -1,0 +1,2 @@
+module Account::BrandsHelper
+end

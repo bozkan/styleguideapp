@@ -1,0 +1,42 @@
+<header class="mb-4 row align-items-end">
+  <div class="col-md-9">
+    <p class="mb-0 text-muted font-size-16"><%= link_to 'Account', account_path %> / Brands</p>
+    <h1 class="h3 mb-0">Your Brands</h1>
+  </div>
+  <div class="col-md-3 text-right">
+    <%= link_to 'New Brand', new_account_brand_path, class:'btn btn-primary' %>
+  </div>
+</header>
+
+<% if @brands.exists? %>
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Subdomain</th>
+            <th colspan="3">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @brands.each do |brand| %>
+            <tr>
+              <td><%= brand.name %></td>
+              <td><%= brand.subdomain %></td>
+              <td>
+                <%= link_to 'View', brand_root_url(subdomain:brand.subdomain), target: :new, class:'btn btn-sm btn-light' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% else %>
+  <div class="empty-state">
+    <%= octicon('ruby', height:65) %>
+    <div class="text-center lead">No brands have been created yet.</div>
+  </div>
+<% end %>

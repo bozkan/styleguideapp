@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   # Super Tenant
   constraints(:host => (Rails.env.production? ? 'styleguides.app' : 'lvh.me' ) ) do
-    get '/account' => 'accounts#index'
+    namespace :account do
+      get '/' => '/accounts#index'
+      resources :brands
+    end
   end
 
   # Tenant

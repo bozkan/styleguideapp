@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
     def redirect_public
       unless ['index','show'].include?(action_name)
-        unless user_signed_in?
+        if user_signed_in? && !authorized_for_brand?
           redirect_to brand_root_path
         end
       end
@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
        request.subdomain.present? ? 'brand' : 'application'
      end
    end
+
+   def authorized_for_brand?
+     current_user.account.brands.include?(current_tenant)
+   end
+
 end
