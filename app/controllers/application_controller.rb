@@ -5,11 +5,13 @@ class ApplicationController < ActionController::Base
   before_action :redirect_public, unless: :devise_controller?
   layout :set_layout
 
+  include ApplicationHelper
+
   private
 
     def redirect_public
       unless ['index','show'].include?(action_name)
-        if user_signed_in? && !authorized_for_brand?
+        unless user_signed_in? && current_user_authorized_for_brand?
           redirect_to brand_root_path
         end
       end
@@ -22,9 +24,4 @@ class ApplicationController < ActionController::Base
        request.subdomain.present? ? 'brand' : 'application'
      end
    end
-
-   def authorized_for_brand?
-     current_user.account.brands.include?(current_tenant)
-   end
-
 end
