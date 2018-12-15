@@ -31,6 +31,7 @@ html, body { height:100%;}
 .home-container--inner {
   height: 100%;
   max-width: 680px;
+  padding:$spacer-48;
 }
 
 @media(max-width:767px){
