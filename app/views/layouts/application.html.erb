@@ -7,6 +7,22 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'partials/layout_header_favicons' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:site_name" content="Style Guides">
+    <meta name="theme-color" content="#f0f0f7"/>
+    <meta name="Description" content="Hosted style guides.">
+    <% if content_for?(:head) %>
+      <%= yield(:head) %>
+    <% else %>
+      <meta property="og:url" content="<%= root_path %>">
+      <meta property="og:type" content="website">
+      <meta property="og:title" content="Style Guides">
+      <meta property="og:description" content="Hosted style guides.">
+      <meta property="og:image" content="">
+      <meta property="og:image:width" content="1110" />
+      <meta property="og:image:height" content="624" />
+    <% end %>
     <link rel="stylesheet" href="https://use.typekit.net/urr6rlc.css">
   </head>
 
