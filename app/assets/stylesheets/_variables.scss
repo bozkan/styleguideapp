@@ -81,7 +81,7 @@ $light:           #ffffff !default;
 
 $body-bg:         #F0F4F8 !default;
 $body-color:      $neutral-8 !default;
-$text-muted:      $gray-600 !default;
+$text-muted:      $neutral-7 !default;
 $text-muted--card: #8898aa;
 $warning-dark:    #856404;
 
@@ -99,7 +99,7 @@ $font-family-sans-serif:      proxima-nova, sans-serif, "Apple Color Emoji", "Se
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 
-$font-size-base:              $font-size-20 !default; // Assumes the browser default, typically `16px`
+$font-size-base:              $font-size-18 !default; // Assumes the browser default, typically `16px`
 $font-size-lg:                ($font-size-base * 1.25) !default;
 $font-size-sm:                ($font-size-base * .875) !default;
 

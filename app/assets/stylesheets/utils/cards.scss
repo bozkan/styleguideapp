@@ -1,0 +1,10 @@
+.card {
+  box-shadow: $box-shadow;
+}
+.card-header {
+  border-bottom: 1px solid $border-color;
+}
+.card-markup {
+  font-size: $font-size-16;
+  pre { margin:0 !important;}
+}

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-
   devise_for :users
+
   # Super Tenant
   constraints(:host => (Rails.env.production? ? 'styleguides.app' : 'lvh.me' ) ) do
 

@@ -8,7 +8,7 @@
   @include transition(left .15s ease);
 }
 .main-inner {
-  max-width:1200px;
+  max-width:900px;
   padding:$spacer-48;
 }
 body.menu-closed {
