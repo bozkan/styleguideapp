@@ -1,4 +1,4 @@
-.simple_form {
+.simple_form:not(.form-unstyled) {
   background: white;
   padding:$spacer;
   border-radius: $border-radius;

@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :warning, :danger, :info
   set_current_tenant_by_subdomain(:brand, :subdomain)
 
-  before_action :redirect_public
+  before_action :redirect_public, unless: :devise_controller?
+  layout :set_layout
 
   private
 
@@ -13,4 +14,12 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+
+   def set_layout
+     if devise_controller?
+       'auth'
+     else
+       request.subdomain.present? ? 'brand' : 'application'
+     end
+   end
 end

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, skip: :registrations
 
   # Super Tenant
   constraints(:host => (Rails.env.production? ? 'styleguides.app' : 'lvh.me' ) ) do
-
+    get '/account' => 'accounts#index'
   end
 
   # Tenant

@@ -44,7 +44,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="home-container">
+
+      <section class="home-container--inner bg-white box-shadow-5">
+        <%= yield %>
+      </section>
+
+      <div class="home-img" style="background-image:url(https://d28lxayvntpz3s.cloudfront.net/site-assets/sg/styleguide-bg.jpg)"></div>
+
+    </div>
     <%= render 'partials/notice' %>
   </body>
 </html>
