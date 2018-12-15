@@ -1,1 +1,6 @@
 <h1 class="h3 mb-4">Components</h1>
+
+<% Component.all.each do |component| %>
+  name:<%= component.name %>
+  <%= component.markup %>
+<% end %>

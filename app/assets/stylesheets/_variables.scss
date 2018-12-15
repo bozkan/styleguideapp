@@ -55,7 +55,7 @@ $green:           #3EBD93 !default;
 $cyan:            #17a2b8 !default;
 
 
-$primary:         #1992D4 !default;
+$primary:         #fd5e44 !default;
 $secondary:       #34495e !default;
 $success:         $green !default;
 $info:            $blue !default;
@@ -103,3 +103,9 @@ $input-placeholder-color:               #9FB3C8 !default;
 $input-plaintext-color:                 $body-color !default;
 $input-group-addon-bg:                 $gray-300;
 $custom-file-height:         calc(2.875rem + 0px);
+
+$card-border-width:                 0px !default;
+$card-border-radius:                $border-radius !default;
+$card-border-color:                 transparent !default;
+$card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
+$card-cap-bg:                       transparent !default;
