@@ -7,9 +7,9 @@
   border-right:1px solid $border-color;
 
   .nav-link{
-    height: 40px;
-    margin: 4px 8px;
-    padding: 0 8px 0 60px;
+    height: 48px;
+    margin: 0;
+    padding: 0 8px 0 64px;
     -webkit-font-smoothing: antialiased;
     font-size: .95rem;
     font-weight: 500;
@@ -17,29 +17,21 @@
     position: relative;
     display: flex;
     align-items: center;
-    border-radius: $border-radius;
+    border-left:5px solid transparent;
     color:$body-color;
-    &:hover { color: $primary;}
 
-    &[aria-expanded="true"]{
-      .nav-link--toggle {
-        transform: rotate(-180deg);
-      }
+    &.active,
+    &:hover {
+      background: $neutral-2;
+      border-left-color: $primary;
     }
 
-    &.active {
-      background: white;
-    }
-  }
-
-  .nav-item:first-child {
-    margin-top:4px;
   }
 
   .nav-icon {
     position: absolute;
-    top:8px;
-    left:8px;
+    top:12px;
+    left:16px;
     fill:$neutral-6;
   }
 
