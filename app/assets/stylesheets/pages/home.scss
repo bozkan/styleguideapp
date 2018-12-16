@@ -13,7 +13,7 @@ html, body { height:100%;}
 
   &:after {
     content:'';
-    background: transparentize(white, 0.6);
+    background: rgba(0,0,0,0.05);
     position: absolute;
     top: 0;
     left:0;
@@ -37,5 +37,10 @@ html, body { height:100%;}
 @media(max-width:767px){
   .home-container {
     margin-left: 0;
+  }
+
+  .home-container--inner {
+    height: auto;
+    padding:$spacer-24;
   }
 }
