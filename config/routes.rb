@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     resources :fonts
     resources :spacers
     resources :components
+
+    namespace :settings do
+      get '/' => '/settings#index'
+    end
   end
 
   root 'home#index'

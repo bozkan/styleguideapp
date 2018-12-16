@@ -1,21 +1,35 @@
-<h1 class="h3 mb-4">Components</h1>
+<header class="mb-4 row align-items-end">
+  <div class="col-md-9">
+    <h1 class="h3 mb-0">Components</h1>
+  </div>
+  <div class="col-md-3 text-right">
+    <%= link_to 'Add Component', new_component_path, class:'btn btn-sm btn-primary' if current_user_authorized_for_brand? %>
+  </div>
+</header>
+
 <% @components.each do |component| %>
   <div class="card">
-    <div class="card-header font-weight-bold"><%= component.name %></div>
+    <div class="card-header font-weight-bold d-flex align-items-center">
+      <div class="mr-auto"><%= component.name %></div>
+      <div class="dropdown icon-dropdown ml-2">
+        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= octicon "kebab-vertical", height:20, class:'ml-1' %>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+          <%= link_to 'Edit', edit_component_path(component), class:'dropdown-item' %>
+          <%= link_to 'Delete', component, method: :delete, data:{confirm:'Are you sure?'}, class:'dropdown-item' %>
+        </div>
+      </div>
+    </div>
     <div class="card-body">
       <p class="card-text">This is primarily used on the home and about pages.</p>
     </div>
     <div class="card-markup">
+      <div class="markup-actions d-flex align-items-center">
+        <span class="badge bg-neutral-9 color-neutral-4 text-uppercase box-shadow-2">html</span>
+        <span class="badge bg-neutral-9 color-neutral-4 text-uppercase box-shadow-2">css</span>
+      </div>
       <pre><code class="language-html"><%= component.markup %></code></pre>
-    </div>
-    <div class="card-footer d-flex align-items-center">
-      <div class="text-left text-muted">
-        html
-        scss
-      </div>
-      <div class="ml-auto">
-        <%= octicon('kebab-vertical', height:20) %>
-      </div>
     </div>
   </div>
 <% end %>

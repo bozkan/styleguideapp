@@ -8,96 +8,29 @@
 </header>
 
 
-<ul class="list-unstyled color-list">
-
-  <li style="width:124px;" class="float-left mr-4 mb-4">
-    <div class="card">
-      <div class="card-img-top" style="height:100px;background:#102A43;"></div>
-      <div class="card-body">
-        #102A43
-      </div>
-    </div>
-  </li>
-
-  <li style="width:124px;" class="float-left mr-4 mb-4">
-    <div class="card">
-      <div class="card-img-top" style="height:100px;background:#243B53;"></div>
-      <div class="card-body">
-        #243B53
-      </div>
-    </div>
-  </li>
-
-  <li style="width:124px;" class="float-left mr-4 mb-4">
-    <div class="card">
-      <div class="card-img-top" style="height:100px;background:#334E68;"></div>
-      <div class="card-body">
-        #334E68
-      </div>
-    </div>
-  </li>
-
-  <li style="width:124px;" class="float-left mr-4 mb-4">
-    <div class="card">
-      <div class="card-img-top" style="height:100px;background:#486581;"></div>
-      <div class="card-body">
-        #486581
-      </div>
-    </div>
-  </li>
-
-  <li style="width:124px;" class="float-left mr-4 mb-4">
-    <div class="card">
-      <div class="card-img-top" style="height:100px;background:#627D98;"></div>
-      <div class="card-body">
-        #627D98
-      </div>
-    </div>
-  </li>
-
-  <li style="width:124px;" class="float-left mr-4 mb-4">
-    <div class="card">
-      <div class="card-img-top" style="height:100px;background:#829AB1;"></div>
-      <div class="card-body">
-        #829AB1
-      </div>
-    </div>
-  </li>
-
-  <li style="width:124px;" class="float-left mr-4 mb-4">
-    <div class="card">
-      <div class="card-img-top" style="height:100px;background:#9FB3C8;"></div>
-      <div class="card-body">
-        #9FB3C8
-      </div>
-    </div>
-  </li>
-
-  <li style="width:124px;" class="float-left mr-4 mb-4">
-    <div class="card">
-      <div class="card-img-top" style="height:100px;background:#BCCCDC;"></div>
-      <div class="card-body">
-        #BCCCDC
-      </div>
-    </div>
-  </li>
-
-  <li style="width:124px;" class="float-left mr-4 mb-4">
-    <div class="card">
-      <div class="card-img-top" style="height:100px;background:#D9E2EC;"></div>
-      <div class="card-body">
-        #D9E2EC
-      </div>
-    </div>
-  </li>
-
-  <li style="width:124px;" class="float-left mr-4 mb-4">
-    <div class="card">
-      <div class="card-img-top" style="height:100px;background:#F0F4F8;"></div>
-      <div class="card-body">
-        #F0F4F8
-      </div>
-    </div>
-  </li>
-
-</ul>
+<% if @colors.exists? %>
+  <ul class="list-unstyled color-list">
+    <% @colors.each do |color| %>
+      <li class="color">
+        <div class="card">
+          <div class="card-header d-flex align-items-center font-weight-bold">
+            Red
+            <div class="dropdown icon-dropdown ml-auto">
+              <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= octicon "kebab-vertical", height:20, class:'ml-1' %>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <%= link_to 'Edit', edit_color_path(color), class:'dropdown-item' %>
+                <%= link_to 'Delete', color, method: :delete, data:{confirm:'Are you sure?'}, class:'dropdown-item' %>
+              </div>
+            </div>
+          </div>
+          <div class="card-body font-size-16">
+            <%= color.hex %>
+          </div>
+          <div class="card-markup" style="background:<%= color.hex %>;"></div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
