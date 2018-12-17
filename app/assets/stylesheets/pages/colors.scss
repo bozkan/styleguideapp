@@ -2,16 +2,11 @@
 
 }
 .color {
-  float:left;
-  width:225px;
-  margin-right: $spacer-32;
-  margin-bottom: $spacer-32;
 
-  .card-markup {
-    height:130px;
+  .swatch {
+    height:68px;
+    width:68px;
+    border-radius: $border-radius 0 0 $border-radius;
   }
 
-  .card-body {
-    font-family: $font-family-monospace;
-  }
 }
