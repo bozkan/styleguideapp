@@ -21,8 +21,27 @@
         </div>
       </div>
     </div>
+
     <div class="card-body">
       <p class="card-text">This is primarily used on the home and about pages.</p>
+      <iframe id="iframe-<%= component.id %>" style="border:none;outline:none;height:40px;"></iframe>
+      <script>
+        var $iframe = $("#iframe-<%= component.id %>")
+        ,   $head   = $iframe.contents().find("head")
+        ,   $body   = $iframe.contents().find("body");
+
+        $iframe.ready(function() {
+
+          var css = '<style type="text/css">body{background:white !important;}</style>';
+          $head.append($("<link/>",{ rel: "stylesheet", href: "https://sport-keeper.com/assets/application-d2dcc6ce1c144a4e5e7e9b524a2c5b68d08687ad237182a0c94cac65a08d3065.css", type: "text/css" }));
+          $head.append(css)
+          $body.append('<a href="" class="btn btn-primary">Test Button</a>');
+
+        });
+
+        $iframe.height( $iframe.contents().outerHeight() );
+
+      </script>
     </div>
     <div class="card-markup">
       <div class="markup-actions d-flex align-items-center">
