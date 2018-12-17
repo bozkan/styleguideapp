@@ -1,0 +1,56 @@
+#js--panel {
+  background: white;
+  position: fixed;
+  top:0;
+  bottom:0;
+  width:320px;
+  right:-340px;
+  z-index: 3;
+  box-shadow: $box-shadow-2;
+  @include transition(right .25s ease);
+
+  &.panel-lg {
+    width:500px;
+    right:-520px;
+  }
+
+  &.show {
+    right:0;
+  }
+
+  &.loading {
+    &:before {
+      content:'';
+      background: rgba(255,255,255,0.8);
+      position: absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      z-index: 1;
+    }
+
+    @include loader();
+  }
+
+}
+
+body.demo #js--panel { top:52px;}
+
+.js--panel-inner{
+  padding:$spacer;
+}
+
+.panel-close {
+  font-weight: lighter;
+  font-size: 2.5em;
+  position: absolute;
+  top: 8px;
+  right: 14px;
+}
+
+body.panel-open {
+  @include blue-mask();
+
+  &:after { position: fixed;}
+}

@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require prism
 //= require popper
+//= require panels
 //= require bootstrap-sprockets
 //= require_tree .
 
