@@ -1,4 +1,9 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
+
+  authenticated :user, -> user { user.email == 'nphaskins@gmail.com' } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   devise_for :users, skip: :registrations
 

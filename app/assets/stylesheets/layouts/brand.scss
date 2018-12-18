@@ -1,6 +1,6 @@
 .brand-wrap {
   padding:$spacer-24;
-  margin-bottom:$spacer-24;
+  margin-bottom:$spacer-16;
   display: block;
   img {
     max-width: 150px;
@@ -16,7 +16,7 @@
 }
 .main-inner {
   //max-width:900px;
-  padding:$spacer-48;
+  padding:$spacer-32 $spacer-48;
 }
 body.menu-closed {
   .side-menu {left:-256px;}
