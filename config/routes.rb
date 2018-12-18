@@ -5,10 +5,11 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  devise_for :users, skip: :registrations
+  devise_for :users, skip: :registrations, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
 
   # Super Tenant
   constraints(:host => (Rails.env.production? ? 'styleguides.app' : 'lvh.me' ) ) do
+    get 'register' => 'register#index'
     namespace :account do
       get '/' => '/accounts#index'
       resources :brands

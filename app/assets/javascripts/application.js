@@ -23,4 +23,10 @@
 
 $(document).on('turbolinks:load', function() {
   Prism.highlightAll();
+
+  if ($('#notices').length) {
+    setTimeout(function(){
+      $('#notices').fadeOut('slow')
+    },3000)
+  }
 });
