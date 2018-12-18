@@ -2,8 +2,9 @@ class Brand < ApplicationRecord
   belongs_to :account
   has_many :colors, dependent: :destroy
   has_many :fonts, dependent: :destroy
-  has_many :spacers, dependent: :destroy
+  has_many :logos, dependent: :destroy
   has_many :components, dependent: :destroy
+  has_many :color_categories, dependent: :destroy
 
   validates_presence_of :name
   validates :subdomain,
@@ -14,5 +15,11 @@ class Brand < ApplicationRecord
       message: '%{value} is reserved' },
     format: { with: /\A[a-zA-Z0-9\-_]+\z/,
       message: 'must only contain letters, numbers, and may also include dash and underscore characters' }
+
+  def primary_logo
+    if logos.exists?
+      logos.order(created_at: :asc).first
+    end
+  end
 
 end

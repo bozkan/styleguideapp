@@ -1,4 +1,11 @@
-
+.brand-wrap {
+  padding:$spacer-24;
+  margin-bottom:$spacer-24;
+  display: block;
+  img {
+    max-width: 150px;
+  }
+}
 .main{
   padding-left:256px;
   @include transition(padding-left .15s ease);
@@ -16,4 +23,21 @@ body.menu-closed {
   .facility--main {padding-left: 0;}
   .facility--main-inner { margin:0 auto;}
   .facility--header { padding-left:0;}
+}
+.logo {
+  position: fixed;
+  bottom: $spacer-16;
+  left: $spacer-16;
+  img {
+    max-width:120px;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    @include transition(filter .15s ease);
+  }
+
+  &:hover img {
+    -webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0);
+  }
+
 }

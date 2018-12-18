@@ -12,12 +12,15 @@
 
   <body class="brand <%= "#{controller_path.parameterize}" %>">
     <div class="menu">
+      <%= render 'partials/brand_logo' if current_tenant.logos.exists? %>
       <%= render 'partials/brand_nav' %>
     </div>
     <div class="main">
       <div class="main-inner">
         <%= yield %>
-        <img src="https://d28lxayvntpz3s.cloudfront.net/site-assets/logos/sg-logo.png" style="max-width:150px;position:absolute;bottom:20px;left:20px;">
+        <%= link_to root_url(subdomain:false), class:'logo' do %>
+          <img src="https://d28lxayvntpz3s.cloudfront.net/site-assets/logos/sg-logo.png" alt="logo">
+        <% end %>
       </div>
     </div>
     <%= render 'partials/notice' %>
