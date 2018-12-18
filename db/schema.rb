@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_172102) do
+ActiveRecord::Schema.define(version: 2018_12_18_233504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2018_12_18_172102) do
     t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "stripe_customer_id"
+    t.index ["stripe_customer_id"], name: "index_accounts_on_stripe_customer_id", unique: true, where: "(stripe_customer_id IS NOT NULL)"
   end
 
   create_table "brands", force: :cascade do |t|
