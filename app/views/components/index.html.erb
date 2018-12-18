@@ -35,9 +35,9 @@
         $iframe.ready(function() {
 
           var css = '<style type="text/css">body{background:white !important;}</style>';
-          $head.append($("<link/>",{ rel: "stylesheet", href: "https://sport-keeper.com/assets/application-d2dcc6ce1c144a4e5e7e9b524a2c5b68d08687ad237182a0c94cac65a08d3065.css", type: "text/css" }));
+          $head.append($("<link/>",{ rel: "stylesheet", href: '<%= current_tenant.stylesheet_url %>', type: "text/css" }));
           $head.append(css)
-          $body.append('<a href="#" class="btn btn-primary">Test Button</a>');
+          $body.append('<%= sanitize(component.markup.squish!) if component.markup.present? %>');
 
         });
 
@@ -46,11 +46,18 @@
       </script>
     </div>
     <div class="card-markup">
-      <div class="markup-actions d-flex align-items-center">
-        <span class="badge bg-neutral-7 color-neutral-2 text-uppercase box-shadow-2">html</span>
-        <span class="badge bg-neutral-7 color-neutral-2 text-uppercase box-shadow-2">css</span>
+      <ul class="markup-actions nav nav-tabs" id="myTab" role="tablist">
+        <li><a class="badge nav-item active" id="markup-tab" data-toggle="tab" href="#markup" role="tab" aria-controls="markup" aria-selected="true">HTML</a></li>
+        <li><a class="badge nav-item" id="scss-tab" data-toggle="tab" href="#scss" role="tab" aria-controls="scss" aria-selected="false">SCSS</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="markup" role="tabpanel" aria-labelledby="markup-tab">
+          <pre><code class="language-html"><%= component.markup %></code></pre>
+        </div>
+        <div class="tab-pane" id="scss" role="tabpanel" aria-labelledby="scss-tab">
+          <pre><code class="language-css"><%= component.style %></code></pre>
+        </div>
       </div>
-      <pre><code class="language-html"><%= component.markup %></code></pre>
     </div>
   </div>
 <% end %>

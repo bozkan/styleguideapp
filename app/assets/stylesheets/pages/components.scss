@@ -1,0 +1,41 @@
+.card-markup {
+  position: relative;
+  font-size: $font-size-16;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+
+  pre {
+    margin:0 !important;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+}
+
+.markup-actions {
+  position: absolute;
+  top:$spacer-8;
+  right:$spacer-8;
+  border-bottom: none;
+
+  .nav-item {
+    background: $neutral-7;
+    color:$neutral-2;
+    text-decoration: uppercase;
+    box-shadow: $box-shadow-2;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing:antialiased;
+
+    &:first-child {
+      margin-right: $spacer-8;
+    }
+
+    &.active,
+    &:hover {
+      color: white;
+      background: $primary;
+      text-decoration: white;
+    }
+
+  }
+
+}

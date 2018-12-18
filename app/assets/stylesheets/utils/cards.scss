@@ -4,25 +4,3 @@
 .card-header {
   border-bottom: 1px solid $border-color;
 }
-.card-markup {
-  position: relative;
-  font-size: $font-size-16;
-  border-bottom-left-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
-
-  pre {
-    margin:0 !important;
-    border-bottom-left-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-  }
-}
-
-.markup-actions {
-  position: absolute;
-  top:$spacer-8;
-  right:$spacer-8;
-
-  span:not(:last-child ){
-    margin-right: $spacer-8;
-  }
-}
