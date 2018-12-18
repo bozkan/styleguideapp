@@ -1,19 +1,29 @@
-<h1 class="h3 mb-4">Fonts</h1>
-
-<div class="card mb-3">
-  <div class="card-body">
-    <p class="mb-0" style="font-size:1.25rem">The great white fox jumps over the lazy moon.</p>
+<header class="mb-4 row align-items-end">
+  <div class="col-md-6">
+    <h1 class="h3 mb-0">Fonts</h1>
   </div>
-</div>
+  <% if current_user_authorized_for_brand?  %>
+    <div class="col-md-6 text-right">
+      <%= link_to 'Add Font', new_font_path, class:'btn btn-sm btn-primary' %>
+    </div>
+  <% end %>
+</header>
 
-<div class="card mb-3">
-  <div class="card-body">
-    <p class="mb-0" style="font-size:1.5rem">The great white fox jumps over the lazy moon.</p>
-  </div>
-</div>
 
-<div class="card">
-  <div class="card-body">
-    <p class="mb-0" style="font-size:1.75rem">The great white fox jumps over the lazy moon.</p>
+<% if @fonts.exists? %>
+  <ul class="list-unstyled font-list">
+    <% @fonts.each do |font| %>
+      <div class="card mb-1">
+        <div class="card-body">
+          <p class="mb-0" style="font-size:<%= font.size %>">Would you like to play a nice game of chess?</p>
+          <p class="mb-0 color-neutral-6 font-size-16"><%= font.size %> - <%= font.name %></p>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="empty-state">
+    <%= octicon('paintcan', height:65) %>
+    <div class="text-center lead">You haven't added any fonts yet.</div>
   </div>
-</div>
+<% end %>

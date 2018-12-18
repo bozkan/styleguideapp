@@ -4,11 +4,20 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.association :brand %>
-    <%= f.input :file_data %>
     <%= f.input :name %>
     <%= f.input :description %>
   </div>
+  <fieldset class="form--image-thumbnail file-with-preview">
+    <legend>Logo</legend>
+    <% if @logo.file_data? %>
+      <%= image_tag @logo.file_url(:thumb)%>
+      <%= f.input :remove_file, as: :boolean, wrapper: :custom_boolean %>
+    <% else %>
+      <%= f.input :file, as: :hidden, input_html: { value: @logo.cached_file_data } %>
+      <%= f.input :file, as: :file, wrapper: :custom_file, input_html:{class:'input-file-preview'},  hint:"The size of the logo must be under 5MB, and acceptable formats include JPG, JPEG, or PNG." %>
+    <% end %>
+  </fieldset>
+
 
   <div class="form-actions">
     <%= f.button :submit %>

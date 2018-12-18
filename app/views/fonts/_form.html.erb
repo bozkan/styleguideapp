@@ -4,11 +4,12 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.association :brand %>
     <%= f.input :name %>
-    <%= f.input :size %>
-    <%= f.input :line_height %>
-    <%= f.input :weight %>
+    <div class="form-row">
+      <%= f.input :size, wrapper_html:{class:'col-lg-4'} %>
+      <%= f.input :line_height, wrapper_html:{class:'col-lg-4'} %>
+      <%= f.input :weight, wrapper_html:{class:'col-lg-4'} %>
+    </div>
   </div>
 
   <div class="form-actions">

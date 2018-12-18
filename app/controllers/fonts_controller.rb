@@ -5,7 +5,7 @@ class FontsController < ApplicationController
 
   # GET /fonts
   def index
-    @fonts = Font.all
+    @fonts = Font.order(size: :desc)
   end
 
   # GET /fonts/1
@@ -26,7 +26,7 @@ class FontsController < ApplicationController
     @font = Font.new(font_params)
 
     if @font.save
-      redirect_to @font, success: 'Font was successfully created.'
+      redirect_to fonts_path, success: 'Font was successfully created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class FontsController < ApplicationController
   # PATCH/PUT /fonts/1
   def update
     if @font.update(font_params)
-      redirect_to @font, success: 'Font was successfully updated.'
+      redirect_to fonts_path, success: 'Font was successfully updated.'
     else
       render :edit
     end
@@ -55,6 +55,6 @@ class FontsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def font_params
-      params.require(:font).permit(:brand_id, :name, :size, :line_height, :weight)
+      params.require(:font).permit(:name, :size, :line_height, :weight)
     end
 end

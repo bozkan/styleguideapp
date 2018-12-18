@@ -18,6 +18,10 @@ gem 'acts_as_tenant'
 gem 'octicons_helper'
 gem 'gibbon'
 gem 'devise'
+gem 'shrine', '~> 2.0'
+gem 'aws-sdk-s3'
+gem 'image_processing', '~> 1.0'
+gem 'fastimage'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
