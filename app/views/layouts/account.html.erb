@@ -27,7 +27,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                 <%= link_to 'Account', account_path, class:'dropdown-item' %>
-                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:'dropdown-item' %>
+                <%= link_to 'Logout', destroy_user_session_path(subdomain:false), method: :delete, class:'dropdown-item' %>
               </div>
             </li>
           <% end %>
