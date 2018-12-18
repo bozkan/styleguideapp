@@ -5,6 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
+    <%= f.input :display_color, input_html:{value:(@logo.display_color.present? ? @logo.display_color : '#FFFFFF')} %>
     <%= f.input :description %>
   </div>
   <fieldset class="form--image-thumbnail file-with-preview">

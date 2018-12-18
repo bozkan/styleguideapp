@@ -54,6 +54,6 @@ class LogosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def logo_params
-      params.require(:logo).permit(:brand_id, :file, :remove_file, :name, :description)
+      params.require(:logo).permit(:file, :remove_file, :name, :description, :display_color)
     end
 end
