@@ -25,7 +25,7 @@ class LogosController < ApplicationController
     @logo = Logo.new(logo_params)
 
     if @logo.save
-      redirect_to @logo, notice: 'Logo was successfully created.'
+      redirect_to @logo, success: 'Logo was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class LogosController < ApplicationController
   # PATCH/PUT /logos/1
   def update
     if @logo.update(logo_params)
-      redirect_to @logo, notice: 'Logo was successfully updated.'
+      redirect_to @logo, success: 'Logo was successfully updated.'
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class LogosController < ApplicationController
   # DELETE /logos/1
   def destroy
     @logo.destroy
-    redirect_to logos_url, notice: 'Logo was successfully destroyed.'
+    redirect_to logos_url, success: 'Logo was successfully destroyed.'
   end
 
   private

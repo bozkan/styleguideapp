@@ -42,7 +42,7 @@ class Account::BrandsController < AccountsController
   # DELETE /brands/1
   def destroy
     @brand.destroy
-    redirect_to brands_url, notice: 'brand was successfully destroyed.'
+    redirect_to brands_url, success: 'brand was successfully destroyed.'
   end
 
   private

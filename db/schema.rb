@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_004917) do
+ActiveRecord::Schema.define(version: 2018_12_18_132112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,9 @@ ActiveRecord::Schema.define(version: 2018_12_18_004917) do
     t.string "hex", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "color_category_id"
     t.index ["brand_id"], name: "index_colors_on_brand_id"
+    t.index ["color_category_id"], name: "index_colors_on_color_category_id"
   end
 
   create_table "components", force: :cascade do |t|
@@ -105,6 +107,7 @@ ActiveRecord::Schema.define(version: 2018_12_18_004917) do
   add_foreign_key "brands", "accounts"
   add_foreign_key "color_categories", "brands"
   add_foreign_key "colors", "brands"
+  add_foreign_key "colors", "color_categories"
   add_foreign_key "components", "brands"
   add_foreign_key "fonts", "brands"
   add_foreign_key "logos", "brands"

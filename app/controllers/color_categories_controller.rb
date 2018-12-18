@@ -25,7 +25,7 @@ class ColorCategoriesController < ApplicationController
     @color_category = ColorCategory.new(color_category_params)
 
     if @color_category.save
-      redirect_to @color_category, notice: 'Color category was successfully created.'
+      redirect_to color_categories_path, success: 'Color category was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class ColorCategoriesController < ApplicationController
   # PATCH/PUT /color_categories/1
   def update
     if @color_category.update(color_category_params)
-      redirect_to @color_category, notice: 'Color category was successfully updated.'
+      redirect_to color_categories_path, success: 'Color category was successfully updated.'
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class ColorCategoriesController < ApplicationController
   # DELETE /color_categories/1
   def destroy
     @color_category.destroy
-    redirect_to color_categories_url, notice: 'Color category was successfully destroyed.'
+    redirect_to color_categories_url, success: 'Color category was successfully destroyed.'
   end
 
   private
@@ -54,6 +54,6 @@ class ColorCategoriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def color_category_params
-      params.require(:color_category).permit(:brand_id, :name)
+      params.require(:color_category).permit(:name)
     end
 end

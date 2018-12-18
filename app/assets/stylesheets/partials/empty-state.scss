@@ -1,0 +1,15 @@
+.empty-state {
+  padding:$spacer-32;
+  height:25vh;
+  background: transparent;
+  color:$neutral-6;
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-direction(column);
+
+  svg {
+    fill:$neutral-6;
+    margin-bottom: $spacer-48;
+  }
+}

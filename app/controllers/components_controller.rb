@@ -25,7 +25,7 @@ class ComponentsController < ApplicationController
     @component = Component.new(component_params)
 
     if @component.save
-      redirect_to @component, notice: 'Component was successfully created.'
+      redirect_to @component, success: 'Component was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class ComponentsController < ApplicationController
   # PATCH/PUT /components/1
   def update
     if @component.update(component_params)
-      redirect_to @component, notice: 'Component was successfully updated.'
+      redirect_to @component, success: 'Component was successfully updated.'
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class ComponentsController < ApplicationController
   # DELETE /components/1
   def destroy
     @component.destroy
-    redirect_to components_url, notice: 'Component was successfully destroyed.'
+    redirect_to components_url, success: 'Component was successfully destroyed.'
   end
 
   private

@@ -26,7 +26,7 @@ class FontsController < ApplicationController
     @font = Font.new(font_params)
 
     if @font.save
-      redirect_to @font, notice: 'Font was successfully created.'
+      redirect_to @font, success: 'Font was successfully created.'
     else
       render :new
     end
@@ -35,7 +35,7 @@ class FontsController < ApplicationController
   # PATCH/PUT /fonts/1
   def update
     if @font.update(font_params)
-      redirect_to @font, notice: 'Font was successfully updated.'
+      redirect_to @font, success: 'Font was successfully updated.'
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class FontsController < ApplicationController
   # DELETE /fonts/1
   def destroy
     @font.destroy
-    redirect_to fonts_url, notice: 'Font was successfully destroyed.'
+    redirect_to fonts_url, success: 'Font was successfully destroyed.'
   end
 
   private

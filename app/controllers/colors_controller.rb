@@ -4,7 +4,8 @@ class ColorsController < ApplicationController
 
   # GET /colors
   def index
-    @colors = Color.all
+    @colors     = Color.all
+    @categories = ColorCategory.includes(:colors).all
   end
 
   # GET /colors/1
@@ -25,7 +26,7 @@ class ColorsController < ApplicationController
     @color = Color.new(color_params)
 
     if @color.save
-      redirect_to @color, notice: 'Color was successfully created.'
+      redirect_to colors_path, success: 'Color was successfully created.'
     else
       render :new
     end
@@ -34,7 +35,7 @@ class ColorsController < ApplicationController
   # PATCH/PUT /colors/1
   def update
     if @color.update(color_params)
-      redirect_to @color, notice: 'Color was successfully updated.'
+      redirect_to colors_path, success: 'Color was successfully updated.'
     else
       render :edit
     end
@@ -43,7 +44,7 @@ class ColorsController < ApplicationController
   # DELETE /colors/1
   def destroy
     @color.destroy
-    redirect_to colors_url, notice: 'Color was successfully destroyed.'
+    redirect_to colors_url, success: 'Color was successfully destroyed.'
   end
 
   private
@@ -54,6 +55,6 @@ class ColorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def color_params
-      params.require(:color).permit(:brand_id, :hex)
+      params.require(:color).permit(:hex, :color_category_id)
     end
 end

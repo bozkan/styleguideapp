@@ -1,0 +1,56 @@
+.header {
+  margin-bottom:$spacer-48;
+}
+.header-body {
+  padding-bottom: $spacer-24;
+  border-bottom: 1px solid $border-color;
+
+  &.with-tabs {
+    padding-bottom: 0;
+  }
+}
+.header-title {
+  margin:0;
+  font-size: $h3-font-size;
+}
+.header-pretitle {
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: $text-muted;
+  font-size: $font-size-14;
+  margin: 0 auto 5px;
+}
+.header-actions {
+
+}
+
+.header-tabs {
+  margin-top: $spacer-24;
+  .nav-link {
+    padding-top:0.8em;
+    padding-bottom: 0.8rem;
+    text-transform: uppercase;
+    font-size: $font-size-14;
+    letter-spacing: 0.1em;
+    position: relative;
+    color:$text-muted;
+  }
+  .nav-item {
+
+    &:after {
+      content: '';
+      display: block;
+      width: 0;
+      margin:auto;
+      height: 2px;
+      background: transparent;
+      transition: width .2s ease, background-color .2s ease;
+    }
+
+    &.active:after,
+    &:hover:after {
+      width:100%;
+      background: $primary;
+    }
+  }
+}
