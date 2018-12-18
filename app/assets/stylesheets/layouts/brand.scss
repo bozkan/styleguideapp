@@ -14,15 +14,19 @@
   width:256px;
   @include transition(left .15s ease);
 }
+.header {
+  border-bottom: 1px solid $border-color;
+  height:56px;
+}
 .main-inner {
   //max-width:900px;
   padding:$spacer-32 $spacer-48;
 }
 body.menu-closed {
-  .side-menu {left:-256px;}
-  .facility--main {padding-left: 0;}
-  .facility--main-inner { margin:0 auto;}
-  .facility--header { padding-left:0;}
+  .menu {left:-256px;}
+  .main {padding-left: 0;}
+  .main-inner { margin:0 auto;}
+  .header { padding-left:0;}
 }
 .logo {
   position: fixed;
@@ -40,4 +44,26 @@ body.menu-closed {
     filter: grayscale(0);
   }
 
+}
+
+#js--toggle-brand-menu {
+  left: $spacer-24;
+  position: relative;
+  padding: 10px;
+  height: 44px;
+  width: 44px;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 23px;
+  display: block;
+  float: left;
+  top:5px;
+  @include transition(margin-left .15s ease);
+
+  svg { fill:$neutral-6;}
+
+  &:hover {
+    background: $neutral-2;
+    svg { fill:$neutral-7;}
+  }
 }

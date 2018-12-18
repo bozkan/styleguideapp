@@ -10,12 +10,15 @@
     <link rel="stylesheet" href="https://use.typekit.net/urr6rlc.css">
   </head>
 
-  <body class="brand <%= "#{controller_path.parameterize}" %>">
+  <body class="brand <%= "#{controller_path.parameterize}" %> <%= 'menu-closed' if 'true' == cookies[:menu_closed] %>">
     <div class="menu">
       <%= render 'partials/brand_logo' if current_tenant.logos.exists? %>
       <%= render 'partials/brand_nav' %>
     </div>
     <div class="main">
+      <header class="header">
+        <%= link_to octicon('three-bars',height:18), '#', id:'js--toggle-brand-menu' %>
+      </header>
       <div class="main-inner">
         <%= yield %>
         <%= link_to root_url(subdomain:false), class:'logo' do %>

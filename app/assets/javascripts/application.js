@@ -12,13 +12,14 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require js.cookie
 //= require activestorage
 //= require turbolinks
 //= require prism
 //= require popper
 //= require panels
+//= require menu
 //= require bootstrap-sprockets
-//= require_tree .
 
 $(document).on('turbolinks:load', function() {
   Prism.highlightAll();
