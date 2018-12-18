@@ -22,7 +22,8 @@ Rails.application.routes.draw do
     resources :components
 
     namespace :settings do
-      get '/' => '/settings#index'
+      get '/'         => '/settings#index'
+      post '/update'  => '/settings#update', as: :update
     end
   end
 

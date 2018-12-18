@@ -4,6 +4,8 @@
   <li class="nav-item"><%= link_to (octicon('paintcan', class:'nav-icon',height:24) + "Colors"), colors_path, class:"#{'active' if 'colors' == controller_name} nav-link" %></li>
   <li class="nav-item"><%= link_to (octicon('text-size', class:'nav-icon',height:24) + "Fonts"), fonts_path, class:"#{'active' if 'fonts' == controller_name} nav-link" %></li>
   <li class="nav-item"><%= link_to (octicon('archive', class:'nav-icon',height:24) + "Components"), components_path, class:"#{'active' if 'components' == controller_name} nav-link" %></li>
-  <li class="nav-item border-bottom my-4"></li>
-  <li class="nav-item"><%= link_to (octicon('gear', class:'nav-icon',height:24) + "Settings"), settings_path, class:"#{'active' if 'settings' == controller_name} nav-link" %></li>
+  <% if current_user_authorized_for_brand?  %>
+    <li class="nav-item border-bottom my-4"></li>
+    <li class="nav-item"><%= link_to (octicon('gear', class:'nav-icon',height:24) + "Settings"), settings_path, class:"#{'active' if 'settings' == controller_name} nav-link" %></li>
+  <% end %>
 </ul>

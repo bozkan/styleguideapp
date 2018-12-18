@@ -3,3 +3,16 @@
     <h1 class="h3 mb-0">Settings</h1>
   </div>
 </header>
+
+<%= simple_form_for(@brand, url: settings_update_path, method: :post) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :stylesheet_url, required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, value:'Update Settings' %>
+  </div>
+<% end %>
