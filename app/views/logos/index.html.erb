@@ -29,7 +29,7 @@
             <% end %>
           </div>
           <div class="card-body" style="background:<%= logo.display_color %>;">
-            <%= image_tag logo.file_url(:small, public: true), class:'img-fluid' if logo.file_data? %>
+            <%= image_tag logo.file_url(:small, public: true), class:'img-fluid',style:'max-width:200px;' if logo.file_data? %>
           </div>
         </div>
       </li>
