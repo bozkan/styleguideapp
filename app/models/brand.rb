@@ -16,10 +16,25 @@ class Brand < ApplicationRecord
     format: { with: /\A[a-zA-Z0-9\-_]+\z/,
       message: 'must only contain letters, numbers, and may also include dash and underscore characters' }
 
+  after_create_commit :setup_brand
+
   def primary_logo
     if logos.exists?
       logos.order(created_at: :asc).first
     end
   end
+
+  private
+
+    def setup_brand
+      # @todo Trigger Cloudflare Job
+      self.color_categories.create([{
+        name:'Primaries'
+      },{
+        name:'Neutrals'
+      },{
+        name:'Supporting'
+      }])
+    end
 
 end

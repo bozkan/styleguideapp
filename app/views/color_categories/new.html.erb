@@ -1,6 +1,7 @@
 <header class="mb-4 row align-items-end">
   <div class="col-md-9">
-    <h1 class="h3 mb-0">New Color Category</h1>
+    <h1 class="h3 mb-0"><%= link_to 'Colors', colors_path %> / <%= link_to 'Color Categories', color_categories_path %> / Add Color Category</h1>
   </div>
 </header>
+
 <%= render 'form', color_category: @color_category %>
