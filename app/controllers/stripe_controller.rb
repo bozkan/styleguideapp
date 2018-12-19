@@ -1,7 +1,7 @@
 class StripeController < ApplicationController
 
   protect_from_forgery :except => :process_webhook
-  skip_before_action :verify_authenticity_token, :authorize!, :redirect_public
+  skip_before_action :verify_authenticity_token, :redirect_public
   before_action :verify_event
 
   def process_webhook
