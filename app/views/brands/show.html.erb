@@ -1,6 +1,24 @@
-<h1 class="h3 mb-4">Style Guide</h1>
-<div class="w-75">
-<p>As <%= current_tenant.name %> continues to grow, both as a product and a company, one challenge we are faced with is learning how to refine the <%= current_tenant.name %> brand identity and apply it cohesively to each of our products.</p>
-<p>We created this styleguide to act as a central location where we house a live inventory of UI components, brand guidelines, brand assets, code snippets, developer guidelines and more.</p>
-<p>Anyone working on the <%= current_tenant.name %> product is encouraged to stay familiar with this styleguide and help ensure that it is kept up-to-date.</p>
-</div>
+<% if current_user_authorized_for_brand? %>
+
+  <h3 class="h4 color-neutral-6 mb-1">Welcome to your style guide!</h3>
+  <p class="w-50 color-neutral-6 font-size-16">We'll guide you through getting your logos uploaded, and colors in order before we set you on your way.</p>
+  <ul class="list-unstyled list-steps">
+    <li class="completed">
+      <%= link_to 'Create brand', new_account_brand_path, class:'color-neutral-6' %>
+    </li>
+    <li>
+      <%= link_to 'Add your logo', new_logo_path, class:'color-neutral-6' %>
+    </li>
+    <li>
+      <%= link_to 'Add a component', new_component_path, class:'color-neutral-6' %>
+    </li>
+  </ul>
+
+<% else %>
+  <h1 class="h3 mb-4">Style Guide</h1>
+  <div class="w-75">
+    <p>As <%= current_tenant.name %> continues to grow, both as a product and a company, one challenge we are faced with is learning how to refine the <%= current_tenant.name %> brand identity and apply it cohesively to each of our products.</p>
+    <p>We created this styleguide to act as a central location where we house a live inventory of UI components, brand guidelines, brand assets, code snippets, developer guidelines and more.</p>
+    <p>Anyone working on the <%= current_tenant.name %> product is encouraged to stay familiar with this styleguide and help ensure that it is kept up-to-date.</p>
+  </div>
+<% end %>

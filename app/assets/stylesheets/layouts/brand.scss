@@ -17,6 +17,13 @@
 .header {
   border-bottom: 1px solid $border-color;
   height:56px;
+  @include flexbox;
+  @include align-items(center);
+
+  .icon-dropdown {
+    margin-left: auto;
+    margin-right: $spacer-24;
+  }
 }
 .main-inner {
   //max-width:900px;
@@ -56,8 +63,7 @@ body.menu-closed {
   text-align: center;
   line-height: 23px;
   display: block;
-  float: left;
-  top:5px;
+  margin-right: auto;
   @include transition(margin-left .15s ease);
 
   svg { fill:$neutral-6;}

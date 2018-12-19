@@ -5,8 +5,8 @@ class Logo < ApplicationRecord
 
   acts_as_tenant(:brand)
 
-
   validate :hex_format
+  validates_presence_of :name, :file
 
   private
 

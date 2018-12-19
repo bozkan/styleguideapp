@@ -4,8 +4,8 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :hex, required: true %>
-    <%= f.input :color_category_id, collection:ColorCategory.all, include_blank: false, label:'Category' %>
+    <%= f.input :hex, required: true, input_html:{class:'colorpicker',value:(@color.hex.present? ? @color.hex : '#FFFFFF')}, hint:'Paste in, or select a color.' %>
+    <%= f.input :color_category_id, collection:ColorCategory.all, include_blank: false, label:'Category', hint:'Choose a category for the color.' %>
   </div>
 
   <div class="form-actions">

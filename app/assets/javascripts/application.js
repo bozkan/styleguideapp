@@ -21,8 +21,18 @@
 //= require menu
 //= require bootstrap-sprockets
 //= require showpassword
+//= require files
+//= require colorpicker
+
+function initColorPicker(){
+  $('.colorpicker').minicolors({
+    theme:'bootstrap'
+  });
+}
 
 $(document).on('turbolinks:load', function() {
+
+  initColorPicker()
   Prism.highlightAll();
 
   if ($('#notices').length) {

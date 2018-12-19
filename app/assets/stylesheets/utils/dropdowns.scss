@@ -1,0 +1,19 @@
+.icon-dropdown {
+  height: $spacer-32;
+  width:$spacer-32;
+  line-height:$spacer-32;
+  text-align: center;
+  border-radius: 50%;
+
+  a[data-toggle="dropdown"] {
+    padding: 0;
+    display: block;
+  }
+
+  svg { fill:$neutral-7;}
+
+  &:hover {
+    cursor: pointer;
+    background: $neutral-2;
+  }
+}

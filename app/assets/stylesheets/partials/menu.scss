@@ -7,7 +7,7 @@
   border-right:1px solid $border-color;
 
   .nav-link{
-    height: 48px;
+    height: 56px;
     margin: 0;
     padding: 0 8px 0 64px;
     -webkit-font-smoothing: antialiased;
@@ -30,7 +30,7 @@
 
   .nav-icon {
     position: absolute;
-    top:12px;
+    top:16px;
     left:16px;
     fill:$neutral-6;
   }

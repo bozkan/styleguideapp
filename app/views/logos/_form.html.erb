@@ -4,20 +4,18 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :display_color, input_html:{value:(@logo.display_color.present? ? @logo.display_color : '#FFFFFF')} %>
-    <%= f.input :description %>
-  </div>
-  <fieldset class="form--image-thumbnail file-with-preview">
-    <legend>Logo</legend>
+    <%= f.input :name, hint:'A name to refer to the logo by.' %>
+    <%= f.input :display_color, label:'Backdrop Color', input_html:{class:'colorpicker',value:(@logo.display_color.present? ? @logo.display_color : '#FFFFFF')}, hint:'This color is displayed as a backdrop for the logo.' %>
+    <%= f.input :description, hint:'Optional description for the logo.' %>
+
     <% if @logo.file_data? %>
       <%= image_tag @logo.file_url(:thumb)%>
       <%= f.input :remove_file, as: :boolean, wrapper: :custom_boolean %>
     <% else %>
       <%= f.input :file, as: :hidden, input_html: { value: @logo.cached_file_data } %>
-      <%= f.input :file, as: :file, wrapper: :custom_file, input_html:{class:'input-file-preview'},  hint:"The size of the logo must be under 5MB, and acceptable formats include JPG, JPEG, or PNG." %>
+      <%= f.input :file, as: :file, label:'Logo File', wrapper: :custom_file, input_html:{class:'input-file-preview'},  hint:"The size of the logo must be under 5MB, and acceptable formats include JPG, JPEG, or PNG." %>
     <% end %>
-  </fieldset>
+  </div>
 
 
   <div class="form-actions">

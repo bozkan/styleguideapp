@@ -1,5 +1,25 @@
-<h1>New Logo</h1>
+<header class="mb-4 row align-items-end">
+  <div class="col-md-9">
+    <h1 class="h3 mb-0">New Logo</h1>
+  </div>
+</header>
 
-<%= render 'form', logo: @logo %>
-
-<%= link_to 'Back', logos_path %>
+<div class="row">
+  <div class="col-md-8">
+    <%= render 'form', logo: @logo %>
+  </div>
+  <div class="col-md-4">
+    <h3 class="h4 color-neutral-6 mb-3">Style Guide Setup</h3>
+    <ul class="list-unstyled list-steps">
+      <li class="completed">
+        <%= link_to 'Create brand', new_account_brand_path, class:'color-neutral-6' %>
+      </li>
+      <li>
+        <%= link_to 'Add your logo', new_logo_path, class:'color-neutral-6' %>
+      </li>
+      <li>
+        <%= link_to 'Add a component', new_component_path, class:'color-neutral-6' %>
+      </li>
+    </ul>
+  </div>
+</div>
