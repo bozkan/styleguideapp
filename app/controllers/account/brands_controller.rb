@@ -24,7 +24,7 @@ class Account::BrandsController < AccountsController
     @brand = @account.brands.new(brand_params)
 
     if @brand.save
-      redirect_to account_brands_path, success: 'brand was successfully created.'
+      redirect_to edit_account_brands_path(@brand), success: 'brand was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Account::BrandsController < AccountsController
   # PATCH/PUT /brands/1
   def update
     if @brand.update(brand_params)
-      redirect_to account_brands_path, success: 'brand was successfully updated.'
+      redirect_to edit_account_brand_path(@brand), success: 'brand was successfully updated.'
     else
       render :edit
     end
@@ -53,6 +53,6 @@ class Account::BrandsController < AccountsController
 
     # Only allow a trusted parameter "white list" through.
     def brand_params
-      params.require(:brand).permit(:name, :subdomain)
+      params.require(:brand).permit(:name, :subdomain, :website)
     end
 end

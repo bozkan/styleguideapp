@@ -1,0 +1,26 @@
+<% if links %>
+  <div class="card-body">
+    <p class="card-text">We detected a few different stylesheets. Select your sites main CSS stylesheet.</p>
+    <%= simple_form_for([:account,@brand], html:{id:'connect-website-style', class:'form-unstyled'}, url:connect_site_style_account_brand_path, method: :post) do |f| %>
+      <ul class="list-unstyled">
+        <% links.each_with_index do |link, index| %>
+          <li class="mb-3">
+            <div class="custom-control custom-radio">
+              <input type="radio" id="radio<%= index %>" name="brand[stylesheet_url]" class="custom-control-input" value="<%= link %>">
+              <label class="custom-control-label d-block line-height-24" for="radio<%= index %>"><%= link %></label>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+
+      <div class="form-actions">
+        <%= f.button :submit, value:'Finish Connecting Website' %>
+      </div>
+    <% end %>
+  </div>
+
+<% else %>
+  <div class="card-body">
+    <p class="mb-0">We could not find any stylesheet urls associated with your site.</p>
+  </div>
+<% end %>

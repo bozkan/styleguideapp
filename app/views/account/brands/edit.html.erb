@@ -1,0 +1,46 @@
+<header class="mb-4 row align-items-end">
+  <div class="col-md-9">
+    <p class="mb-1 text-muted font-size-16"><%= link_to 'Account', account_path %> / <%= link_to 'Brands', account_brands_path %> / <%= @brand.name %></p>
+    <h1 class="h3 mb-0"><%= @brand.stylesheet_url.present? ? 'Editing Brand' : 'Connect Brand Website' %></h1>
+  </div>
+</header>
+
+<div class="row">
+  <div class="col-md-8">
+    <% if @brand.stylesheet_url.present? %>
+      <%= render 'form', brand: @brand %>
+    <% else %>
+      <div class="card">
+        <div class="card-header font-weight-bold">Connect your website</div>
+        <div class="card-body">
+          <p>This ensures that your style guide component previews will render with the correct styles.</p>
+          <%= simple_form_for([:account,@brand], html:{id:'connect-website', class:'form-unstyled'}, url:connect_site_account_brand_path, remote: true, method: :post) do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+            <div class="form-inputs">
+              <%= f.input :website, label:false, placeholder:'https://yourwebsite.com', required: true %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, value:'Connect Website' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <h3 class="h4 color-neutral-6 mb-3">New Brand Setup</h3>
+    <ul class="list-unstyled list-steps">
+      <li class="completed">
+        <%= link_to 'Register Account', '#', class:'color-neutral-6' %>
+      </li>
+      <li class="completed">
+        <%= link_to 'Add Brand', new_account_brand_path, class:'color-neutral-6' %>
+      </li>
+      <li>
+        <%= link_to 'Connect Website', '#', class:'color-neutral-6' %>
+      </li>
+    </ul>
+  </div>
+</div>

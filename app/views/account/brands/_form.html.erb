@@ -1,0 +1,15 @@
+<%= simple_form_for([:account,@brand]) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name, label:'Company Name', placeholder:'Acme Design Team' %>
+    <%= f.input :subdomain, wrapper: :input_group, hint:'This is part of the URL and how you will access your style guide.' do %>
+      <%= f.input_field :subdomain, class:'form-control form-control-lg', placeholder:'acme', required: true %>
+        <div class="input-group-append"><span class="input-group-text">.<%= request.domain %></span></div>
+      <% end %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

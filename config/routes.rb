@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     post '/register'    => 'register#create'
     namespace :account do
       get '/' => '/accounts#index'
-      resources :brands
+      resources :brands do
+        member do
+          post '/connect-site'       => 'connect_site#connect',        as: :connect_site
+          post '/connect-site-style' => 'connect_site#connect_style',  as: :connect_site_style
+        end
+      end
     end
   end
 
