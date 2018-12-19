@@ -12,6 +12,10 @@
 
   svg { fill:$neutral-7;}
 
+  &.with-view {
+    width:auto;
+  }
+
   &:hover {
     cursor: pointer;
     background: $neutral-2;

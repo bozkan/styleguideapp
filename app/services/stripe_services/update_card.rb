@@ -5,11 +5,10 @@ module StripeServices
     def initialize(params)
       @customer_id    = params[:customer_id]
       @token          = params[:token]
-      @stripe_account = params[:stripe_account]
     end
 
     def call
-      customer = Stripe::Customer.retrieve(@customer_id,{stripe_account:@stripe_account})
+      customer = Stripe::Customer.retrieve(@customer_id)
       customer.source = @token
       customer.save
     rescue Stripe::StripeError => e

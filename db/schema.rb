@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_004357) do
+ActiveRecord::Schema.define(version: 2018_12_19_233337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,40 @@ ActiveRecord::Schema.define(version: 2018_12_19_004357) do
     t.index ["brand_id"], name: "index_spacers_on_brand_id"
   end
 
+  create_table "subscription_payments", force: :cascade do |t|
+    t.bigint "subscription_id"
+    t.string "transaction_id"
+    t.boolean "paid", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscription_id"], name: "index_subscription_payments_on_subscription_id"
+    t.index ["transaction_id"], name: "index_subscription_payments_on_transaction_id", unique: true
+  end
+
+  create_table "subscription_plans", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "stripe_id"
+    t.integer "interval", default: 0
+    t.integer "interval_count", default: 0
+    t.integer "trial_period_days"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stripe_id"], name: "index_subscription_plans_on_stripe_id", unique: true
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "subscription_plan_id"
+    t.string "stripe_id"
+    t.integer "status", default: 0
+    t.datetime "expiration"
+    t.bigint "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_subscriptions_on_account_id", unique: true
+    t.index ["stripe_id"], name: "index_subscriptions_on_stripe_id", unique: true
+    t.index ["subscription_plan_id"], name: "index_subscriptions_on_subscription_plan_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "first_name"
@@ -108,6 +142,14 @@ ActiveRecord::Schema.define(version: 2018_12_19_004357) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "webhook_events", force: :cascade do |t|
+    t.string "webhook_id"
+    t.datetime "api_version"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["webhook_id"], name: "index_webhook_events_on_webhook_id", unique: true
+  end
+
   add_foreign_key "brands", "accounts"
   add_foreign_key "color_categories", "brands"
   add_foreign_key "colors", "brands"
@@ -116,4 +158,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_004357) do
   add_foreign_key "fonts", "brands"
   add_foreign_key "logos", "brands"
   add_foreign_key "spacers", "brands"
+  add_foreign_key "subscription_payments", "subscriptions"
+  add_foreign_key "subscriptions", "accounts"
+  add_foreign_key "subscriptions", "subscription_plans"
 end

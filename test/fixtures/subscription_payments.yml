@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subscription: one
+  transaction_id: MyString
+  paid: false
+
+two:
+  subscription: two
+  transaction_id: MyString
+  paid: false

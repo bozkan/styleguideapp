@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  stripe_id: MyString
+  interval: 1
+  interval_count: 1
+  trial_period_days: 1
+
+two:
+  name: MyString
+  stripe_id: MyString
+  interval: 1
+  interval_count: 1
+  trial_period_days: 1

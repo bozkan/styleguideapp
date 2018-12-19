@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #validates_presence_of :email, :password
-  has_one :account, foreign_key: :owner_id
+  has_one :account, foreign_key: :owner_id, dependent: :destroy
 
 end

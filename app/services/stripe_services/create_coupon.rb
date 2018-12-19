@@ -4,11 +4,10 @@ module StripeServices
 
     def initialize(params)
       @coupon_params  = params[:coupon_params]
-      @stripe_account = params[:stripe_account]
     end
 
     def call
-      coupon = Stripe::Coupon.create(@coupon_params,{stripe_account:@stripe_account})
+      coupon = Stripe::Coupon.create(@coupon_params)
     rescue Stripe::StripeError => e
       OpenStruct.new({success?: false, error: e})
     else

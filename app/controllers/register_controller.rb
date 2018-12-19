@@ -10,7 +10,7 @@ class RegisterController < ApplicationController
     @account = Account.new
     unless user_signed_in?
       @account.build_owner
-      #@account.build_subscription
+      @account.build_subscription
     end
   end
 
@@ -19,16 +19,15 @@ class RegisterController < ApplicationController
 
     if @account.save
 
-      #result = AppServices::SubscriptionService.new({subscription_params: {subscription:@account.subscription, token:params[:stripeToken]}}).call
-      #result = true
-      #if result && result.success?
+      result = AppServices::SubscriptionService.new({subscription_params: {subscription:@account.subscription, token:params[:stripeToken]}}).call
+
+      if result && result.success?
         sign_in(@account.owner)
-        #cookies[:app_version] = app_version
         redirect_to new_account_brand_path, success: 'Registration succesfull!'
-      #else
-      #  @account.destroy
-      #@  redirect_to register_path, warning: "Registration Error #{result.error}"
-    #  end
+      else
+        @account.destroy
+        redirect_to register_path, warning: "Registration Error #{result.error}"
+      end
     else
       render :index, warning: 'Account not created.'
     end

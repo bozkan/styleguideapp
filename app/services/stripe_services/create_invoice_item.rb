@@ -4,11 +4,10 @@ module StripeServices
 
     def initialize(params)
       @item_params    = params[:item_params]
-      @stripe_account = params[:stripe_account]
     end
 
     def call
-      item = Stripe::InvoiceItem.create(@item_params,{stripe_account:@stripe_account})
+      item = Stripe::InvoiceItem.create(@item_params)
     rescue Stripe::StripeError => e
       OpenStruct.new({success?: false, error: e})
     else

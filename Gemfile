@@ -24,6 +24,7 @@ gem 'image_processing', '~> 1.0'
 gem 'fastimage'
 gem 'js_cookie_rails'
 gem 'nokogiri'
+gem 'stripe'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -4,11 +4,10 @@ module StripeServices
 
     def initialize(params)
       @email          = params[:email]
-      @stripe_account = params[:stripe_account]
     end
 
     def call
-      customer = Stripe::Customer.list({email:@email},{stripe_account:@stripe_account})
+      customer = Stripe::Customer.list({email:@email})
       result  = customer.data.present? ? customer.data.first.id : nil
     rescue Stripe::StripeError => e
       OpenStruct.new({success?: false, error: e})

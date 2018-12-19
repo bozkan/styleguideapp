@@ -4,11 +4,10 @@ module StripeServices
 
     def initialize(params)
       @subscription_params  = params[:subscription_params]
-      @stripe_account       = params[:stripe_account]
     end
 
     def call
-      subscription = Stripe::Subscription.create(@subscription_params,{stripe_account:@stripe_account})
+      subscription = Stripe::Subscription.create(@subscription_params)
     rescue Stripe::StripeError => e
       OpenStruct.new({success?: false, error: e})
     else

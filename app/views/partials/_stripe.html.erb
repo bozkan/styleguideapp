@@ -1,0 +1,67 @@
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+$(document).on('turbolinks:load', function(){
+
+  var stripe = Stripe('<%= Rails.application.credentials[:stripe_test_publishable_key] %>');
+  var elements = stripe.elements();
+    // Custom styling can be passed to options when creating an Element.
+  var style = {
+    base: {
+      // Add your base input styles here. For example:
+      fontSize: '18px',
+      color: '#486581',
+      fontSmoothing: 'antialiased',
+      '::placeholder': {
+        color: '#627D98',
+      }
+    }
+  };
+
+  // Create an instance of the card Element.
+  var card = elements.create('card', {style: style});
+
+  // Add an instance of the card Element into the `card-element` <div>.
+
+  if( !$('#card-element').length ) {
+    return false;
+  }
+  card.mount('#card-element');
+
+  var form = document.getElementById('form-payment');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // ensure we're still submitting a payment and not an ach payment
+    if( $(this).attr('id') == 'form-payment') {
+
+      stripe.createToken(card).then(function(result) {
+        if (result.error) {
+          // Inform the customer that there was an error.
+          var errorElement = document.getElementById('card-errors');
+          errorElement.textContent = result.error.message;
+        } else {
+          // Send the token to your server.
+          stripeTokenHandler(result.token);
+        }
+      });
+
+    } else {
+      form.submit();
+    }
+  });
+
+  function stripeTokenHandler(token) {
+    // Insert the token ID into the form so it gets submitted to the server
+    var form = document.getElementById('form-payment');
+    var hiddenInput = document.createElement('input');
+    hiddenInput.setAttribute('type', 'hidden');
+    hiddenInput.setAttribute('name', 'stripeToken');
+    hiddenInput.setAttribute('value', token.id);
+    form.appendChild(hiddenInput);
+
+    // Submit the form
+    form.submit();
+  }
+
+})
+</script>

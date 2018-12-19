@@ -4,11 +4,10 @@ module StripeServices
 
     def initialize(params)
       @customer_id      = params[:customer_id]
-      @stripe_account   = params[:stripe_account]
     end
 
     def call
-      customer = Stripe::Customer.retrieve(@customer_id,{stripe_account:@stripe_account})
+      customer = Stripe::Customer.retrieve(@customer_id)
     rescue Stripe::StripeError => e
       OpenStruct.new({success?: false, error: e})
     else
