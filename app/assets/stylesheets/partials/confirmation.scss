@@ -1,0 +1,35 @@
+.confirmation {
+  @include flexbox;
+
+  &.inline {
+    @include flex-direction(row);
+    @include align-items(center);
+    .message {
+      margin-left:$spacer-12;
+      display: inline-block;
+    }
+  }
+
+  &.block {
+
+  }
+
+  .message {
+    color:$neutral-6;
+    font-size: $font-size-24;
+  }
+}
+
+.icon-circle {
+  height:$spacer-32;
+  width:$spacer-32;
+  display: inline-block;
+  text-align: center;
+  border-radius:50%;
+  line-height: 30px;
+
+  &.success {
+    background: $success;
+    fill:white;
+  }
+}

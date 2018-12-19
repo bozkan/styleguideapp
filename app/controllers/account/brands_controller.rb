@@ -24,7 +24,7 @@ class Account::BrandsController < AccountsController
     @brand = @account.brands.new(brand_params)
 
     if @brand.save
-      redirect_to edit_account_brands_path(@brand), success: 'brand was successfully created.'
+      redirect_to edit_account_brand_path(@brand), success: 'brand was successfully created.'
     else
       render :new
     end

@@ -21,11 +21,16 @@ class Account::ConnectSiteController < AccountsController
     @stylesheet = params.dig('brand','stylesheet_url')
     result = AppServices::ConnectSiteStyle.new({brand:@brand, stylesheet:@stylesheet}).call
 
-    if result && result.success?
-      redirect_to account_brands_path, success: "You're all set!"
-    else
-      flash[:warning] = 'There was a problem saving the stylesheet URL.'
-      redirect_to edit_account_brand_path(@brand)
+    respond_to do |format|
+      if result && result.success?
+        format.html { redirect_to account_brands_path, success: "You're all set!" }
+        format.js {}
+      else
+        format.html { flash[:warning] = 'There was a problem saving the stylesheet URL.'
+                      redirect_to edit_account_brand_path(@brand)
+                    }
+        format.js{}
+      end
     end
   end
 

@@ -1,20 +1,20 @@
 <% if links %>
   <div class="card-body">
-    <p class="card-text">We detected a few different stylesheets. Select your sites main CSS stylesheet.</p>
-    <%= simple_form_for([:account,@brand], html:{id:'connect-website-style', class:'form-unstyled'}, url:connect_site_style_account_brand_path, method: :post) do |f| %>
+    <p class="card-text">We detected <%= pluralize(links.count, 'stylesheet') %>. Select the main CSS stylesheet.</p>
+    <%= simple_form_for([:account,@brand], html:{id:'connect-website-style', class:'form-unstyled'}, url:connect_site_style_account_brand_path, method: :post, remote:true) do |f| %>
       <ul class="list-unstyled">
         <% links.each_with_index do |link, index| %>
           <li class="mb-3">
             <div class="custom-control custom-radio">
-              <input type="radio" id="radio<%= index %>" name="brand[stylesheet_url]" class="custom-control-input" value="<%= link %>">
-              <label class="custom-control-label d-block line-height-24" for="radio<%= index %>"><%= link %></label>
+              <input type="radio" id="radio<%= index %>" name="brand[stylesheet_url]" class="custom-control-input" value="<%= link %>" <%= 'checked' if index == 0 %>>
+              <label class="custom-control-label d-block line-height-24 color-neutral-6" for="radio<%= index %>"><%= link %></label>
             </div>
           </li>
         <% end %>
       </ul>
 
       <div class="form-actions">
-        <%= f.button :submit, value:'Finish Connecting Website' %>
+        <%= f.button :submit, value:'Finish Connecting Website', data:{disable_with:'Updating...'} %>
       </div>
     <% end %>
   </div>
