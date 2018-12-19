@@ -1,6 +1,6 @@
 <header class="mb-4 row align-items-end">
   <div class="col-md-9">
-    <p class="mb-0 text-muted font-size-16"><%= link_to 'Account', account_path %> / New Brand</p>
+    <p class="mb-0 text-muted font-size-16"><%= link_to 'Account', account_path %> / Brands</p>
     <h1 class="h3 mb-0">New Brand</h1>
   </div>
 </header>
@@ -12,13 +12,29 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
       <div class="form-inputs">
-        <%= f.input :name %>
-        <%= f.input :subdomain %>
+        <%= f.input :name, label:'Company Name', placeholder:'Acme Design Team' %>
+        <%= f.input :subdomain, wrapper: :input_group, hint:'This is part of the URL and how you will access your style guide.' do %>
+          <%= f.input_field :subdomain, class:'form-control form-control-lg', placeholder:'acme', required: true %>
+            <div class="input-group-append"><span class="input-group-text">.<%= request.domain %></span></div>
+          <% end %>
       </div>
       <div class="form-actions">
         <%= f.button :submit %>
       </div>
     <% end %>
   </div>
-
+  <div class="col-md-4">
+    <h3 class="h4 color-neutral-6 mb-3">New Brand Setup</h3>
+    <ul class="list-unstyled list-steps">
+      <li class="completed">
+        <%= link_to 'Register Account', '#', class:'color-neutral-6' %>
+      </li>
+      <li>
+        <%= link_to 'Add Brand', new_account_brand_path, class:'color-neutral-6' %>
+      </li>
+      <li>
+        <%= link_to 'Connect Website', '#', class:'color-neutral-6' %>
+      </li>
+    </ul>
+  </div>
 </div>

@@ -20,6 +20,7 @@
 //= require panels
 //= require menu
 //= require bootstrap-sprockets
+//= require showpassword
 
 $(document).on('turbolinks:load', function() {
   Prism.highlightAll();

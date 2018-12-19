@@ -1,1 +1,21 @@
 <h2 class="auth-header">Register an account</h2>
+
+<%= simple_form_for(@account, url:register_path, html:{class:'simple_form new_account form-unstyled'}) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs mb-4">
+    <fieldset class="mb-2">
+      <%= f.fields_for :owner do |owner| %>
+        <%= owner.input :email, input_html:{class:'form-control-lg', autofocus:true}, required: true %>
+        <%= owner.input :password, label:("Password" + (link_to "Show Password", '#', class:'toggle-show-password hidden', style:'font-size:90%;') ).html_safe, required:true, input_html: { autocomplete: 'new-password', class:'show-password form-control-lg' }, wrapper_html:{ class:'with-toggle-password'}  %>
+      <% end %>
+    </fieldset>
+    <%= f.input :newsletter, as: :boolean, wrapper: :custom_boolean, label:'Notify me of updates and announcements via email.', wrapper_html:{class:'text-muted mb-1', style:'font-size:90%;line-height:24px;'} %>
+    <%= f.input :terms, as: :boolean, wrapper: :custom_boolean, label:'I understand the terms and conditions.', wrapper_html:{class:'text-muted mb-1', style:'font-size:90%;line-height:22px;'}, required:true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, value:'Register', class:'btn-primary' %>
+  </div>
+<% end %>

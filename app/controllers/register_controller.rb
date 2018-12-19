@@ -3,6 +3,7 @@ class RegisterController < ApplicationController
   layout 'auth'
 
   before_action :redirect_register, if: :user_signed_in?
+  skip_before_action :redirect_public
   http_basic_authenticate_with name: 'beta', password: '1234', if: :beta?
 
   def index
@@ -16,7 +17,7 @@ class RegisterController < ApplicationController
   def create
     @account = Account.new(account_params)
 
-    if @account.save!
+    if @account.save
 
       #result = AppServices::SubscriptionService.new({subscription_params: {subscription:@account.subscription, token:params[:stripeToken]}}).call
       #result = true

@@ -5,4 +5,7 @@ class Account < ApplicationRecord
   accepts_nested_attributes_for :owner
   validates_associated :owner
 
+  attr_accessor :newsletter, :terms
+
+
 end

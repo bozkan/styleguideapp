@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   # Super Tenant
   constraints(:host => (Rails.env.production? ? 'styleguides.app' : 'lvh.me' ) ) do
-    get 'register' => 'register#index'
+    get 'register'      => 'register#index'
+    post '/register'    => 'register#create'
     namespace :account do
       get '/' => '/accounts#index'
       resources :brands

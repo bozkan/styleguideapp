@@ -1,0 +1,36 @@
+.list-steps{
+  counter-reset: li;
+
+  li {
+    counter-increment: num;
+    margin-bottom: $spacer-16;
+
+    &:last-child { margin-bottom: 0;}
+
+    &:before {
+      content: counter(num);
+      border: 1px solid $neutral-5;
+      color:$neutral-5;
+      height:28px;
+      width:28px;
+      display: inline-block;
+      text-align: center;
+      border-radius: 100%;
+      margin-right: $spacer-12;
+      font-size: 90%;
+      vertical-align: top;
+      line-height: 28px;
+    }
+
+    &.completed{
+      position: relative;
+      opacity: 0.5;
+      text-decoration:line-through;
+
+      &:before {
+        content:'\2713';
+        color:$success;
+      }
+    }
+  }
+}
