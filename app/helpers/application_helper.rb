@@ -4,8 +4,7 @@ module ApplicationHelper
     user_signed_in? &&
     current_tenant &&
     current_tenant.account.users.include?(current_user) ||
-    (current_user.account.brands.exists? && current_user.account.brands.include?(current_tenant) )
-
+    (current_user && current_user.account.brands.exists? && current_user.account.brands.include?(current_tenant) )
   end
 
   def date_display(date, time = true)
