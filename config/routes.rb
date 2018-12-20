@@ -16,7 +16,15 @@ Rails.application.routes.draw do
     post '/register'    => 'register#create'
     namespace :account do
       get '/' => '/accounts#index'
-      resources :subscriptions
+      resources :subscriptions do
+
+        member do
+          post 'update-card'    => 'subscriptions#update_card',   as: :update_card
+          post 'cancel'         => 'subscriptions#cancel',        as: :cancel
+          post 'reactivate'     => 'subscriptions#reactivate',    as: :reactivate
+        end
+
+      end
       resources :payments
       resources :brands do
         member do

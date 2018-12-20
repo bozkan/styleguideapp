@@ -37,7 +37,15 @@
           <li class="list-group-item"><span>Expiration:</span> <span class="float-right"><%= date_display(@subscription.expiration, false) %></span></li>
           <li class="list-group-item"><span><%= @subscription.plan.name %></span><span class="float-right"><%= humanized_money_with_symbol(@subscription.plan.amount) %></span></li>
         </ul>
-
+        <div class="card-footer">
+          <% if @subscription.cancelable? %>
+            <%= link_to (octicon('x', height:15) + "Cancel Subscription"), cancel_account_subscription_path(@subscription), method: :post, class:'card-link text-danger', data:{confirm:"Are you sure you want to do this?"} %>
+          <% elsif @subscription.reactivateable? %>
+            <%= link_to "Reactivate Subscription", reactivate_account_subscription_path(@subscription), method: :post, class:'card-link text-primary', data:{confirm:"Reactivate subscription?"} %>
+          <% elsif @subscription.resubscribeable? %>
+            <%= link_to "Resubscribe", '#', class:'card-link text-primary', data:{confirm:"Reactivate Subscription?"} %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
