@@ -1,0 +1,29 @@
+<header class="page-header row align-items-end">
+  <div class="col-md-9">
+    <h1 class="h3 mb-0"><%= current_tenant.name %> has invited you to their team.</h1>
+  </div>
+</header>
+
+<div class="row mt-3">
+  <div class="col-md-6">
+    <div class="card mb-4">
+      <div class="card-header">Create an Account</div>
+      <div class="card-body">
+
+        <%= simple_form_for(@user, url:invites_claim_path, html:{class:'form-unstyled'}) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+          <div class="form-inputs">
+            <%= f.input :email, required:true, input_html:{value:@invite.email} %>
+            <%= f.input :password, label:("Password" + (link_to "Show Password", '#', class:'toggle-show-password hidden', style:'font-size:90%;') ).html_safe, required:true, input_html: { autocomplete: 'new-password', class:'show-password form-control-lg' }, wrapper_html:{ class:'with-toggle-password'}  %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, value:'Create Account & Claim Invite', data:{disable_with:'Just as sec...'} %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

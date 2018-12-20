@@ -5,6 +5,7 @@ class Brand < ApplicationRecord
   has_many :logos, dependent: :destroy
   has_many :components, dependent: :destroy
   has_many :color_categories, dependent: :destroy
+  has_many :invites, dependent: :destroy
 
   validates_presence_of :name
   validates :subdomain,

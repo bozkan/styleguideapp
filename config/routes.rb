@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     get 'register'      => 'register#index'
     post '/register'    => 'register#create'
     namespace :account do
-      get '/' => '/accounts#index'
+      get '/'               => '/accounts#index'
+      get '/collaborators' => 'collaborators#index'
+      resources :invites
       resources :subscriptions do
 
         member do
@@ -49,6 +51,11 @@ Rails.application.routes.draw do
     namespace :settings do
       get '/'         => '/settings#index'
       post '/update'  => '/settings#update', as: :update
+    end
+
+    namespace :invites do
+      get '/'       => '/invites#index'
+      post '/claim' => '/invites#claim'
     end
   end
 

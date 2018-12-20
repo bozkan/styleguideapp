@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_20_130637) do
+ActiveRecord::Schema.define(version: 2018_12_20_193059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2018_12_20_130637) do
     t.datetime "updated_at", null: false
     t.string "stripe_customer_id"
     t.index ["stripe_customer_id"], name: "index_accounts_on_stripe_customer_id", unique: true, where: "(stripe_customer_id IS NOT NULL)"
+  end
+
+  create_table "accounts_users", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "user_id"], name: "index_accounts_users_on_account_id_and_user_id", unique: true
+    t.index ["account_id"], name: "index_accounts_users_on_account_id"
+    t.index ["user_id"], name: "index_accounts_users_on_user_id"
   end
 
   create_table "brands", force: :cascade do |t|
@@ -73,6 +83,18 @@ ActiveRecord::Schema.define(version: 2018_12_20_130637) do
     t.string "size"
     t.string "line_height"
     t.index ["brand_id"], name: "index_fonts_on_brand_id"
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.string "email"
+    t.bigint "account_id"
+    t.bigint "brand_id"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_invites_on_account_id"
+    t.index ["brand_id"], name: "index_invites_on_brand_id"
+    t.index ["email"], name: "index_invites_on_email", unique: true
   end
 
   create_table "logos", force: :cascade do |t|
@@ -156,12 +178,16 @@ ActiveRecord::Schema.define(version: 2018_12_20_130637) do
     t.index ["webhook_id"], name: "index_webhook_events_on_webhook_id", unique: true
   end
 
+  add_foreign_key "accounts_users", "accounts"
+  add_foreign_key "accounts_users", "users"
   add_foreign_key "brands", "accounts"
   add_foreign_key "color_categories", "brands"
   add_foreign_key "colors", "brands"
   add_foreign_key "colors", "color_categories"
   add_foreign_key "components", "brands"
   add_foreign_key "fonts", "brands"
+  add_foreign_key "invites", "accounts"
+  add_foreign_key "invites", "brands"
   add_foreign_key "logos", "brands"
   add_foreign_key "spacers", "brands"
   add_foreign_key "subscription_payments", "accounts"
