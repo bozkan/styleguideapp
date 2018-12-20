@@ -7,7 +7,7 @@ module WebhookServices
     end
 
     def call
-      WebhookEvent.create!(event_id:@event.id, api_version:@event.api_version)
+      WebhookEvent.create!(webhook_id:@event.id, api_version:@event.api_version)
     end
 
   end

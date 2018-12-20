@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_233337) do
+ActiveRecord::Schema.define(version: 2018_12_20_130637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,10 @@ ActiveRecord::Schema.define(version: 2018_12_19_233337) do
     t.boolean "paid", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_subscription_payments_on_account_id"
     t.index ["subscription_id"], name: "index_subscription_payments_on_subscription_id"
     t.index ["transaction_id"], name: "index_subscription_payments_on_transaction_id", unique: true
   end
@@ -112,6 +116,8 @@ ActiveRecord::Schema.define(version: 2018_12_19_233337) do
     t.integer "trial_period_days"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
     t.index ["stripe_id"], name: "index_subscription_plans_on_stripe_id", unique: true
   end
 
@@ -158,6 +164,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_233337) do
   add_foreign_key "fonts", "brands"
   add_foreign_key "logos", "brands"
   add_foreign_key "spacers", "brands"
+  add_foreign_key "subscription_payments", "accounts"
   add_foreign_key "subscription_payments", "subscriptions"
   add_foreign_key "subscriptions", "accounts"
   add_foreign_key "subscriptions", "subscription_plans"

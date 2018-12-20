@@ -7,12 +7,17 @@ Rails.application.routes.draw do
 
   devise_for :users, skip: :registrations, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
 
+  post '/webhooks/process' => 'stripe#process_webhook'
+
   # Super Tenant
   constraints(:host => (Rails.env.production? ? 'styleguides.app' : 'lvh.me' ) ) do
+
     get 'register'      => 'register#index'
     post '/register'    => 'register#create'
     namespace :account do
       get '/' => '/accounts#index'
+      resources :subscriptions
+      resources :payments
       resources :brands do
         member do
           post '/connect-site'       => 'connect_site#connect',        as: :connect_site

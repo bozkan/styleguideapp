@@ -5,7 +5,8 @@ module WebhookServices
     def initialize(params)
       @event        = params[:event]
       @invoice      = @event.data.object
-      @subscription ||= Subscription.find_by_subscription_merchant_id(@invoice.subscription)
+      @subscription ||= Subscription.find_by_stripe_id(@invoice.subscription)
+      @account      = @subscription.account
     end
 
     def call
@@ -21,7 +22,7 @@ module WebhookServices
 
     private
 
-      attr_reader :event, :invoice, :subscription
+      attr_reader :event, :invoice, :subscription, :account
 
       def update_failed_payment
         last_failed_payment.update_attributes(attempts:invoice.attempt_count)
@@ -35,10 +36,8 @@ module WebhookServices
       def create_failed_payment
         payment = subscription.payments.create!(
           paid: false,
-          attempts:invoice.attempt_count,
-          amount:0,
-          user: subscription.user,
-          payment_method: 'card'
+          amount_cents:0,
+          account: account
         )
       end
 

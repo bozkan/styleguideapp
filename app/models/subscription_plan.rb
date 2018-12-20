@@ -6,4 +6,6 @@ class SubscriptionPlan < ApplicationRecord
   validates_uniqueness_of :stripe_id
 
   attr_accessor :sync_with_stripe
+
+  monetize :amount_cents
 end

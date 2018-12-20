@@ -37,6 +37,6 @@ class StripeController < ApplicationController
     end
 
     def webhook_event_exists?
-      WebhookEvent.exists?(event_id:@event.id)
+      WebhookEvent.exists?(webhook_id:@event.id)
     end
 end

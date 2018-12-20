@@ -34,3 +34,28 @@
     }
   }
 }
+
+.list-check {
+  svg {
+    fill:$success;
+    margin-right: $spacer-8;
+  }
+}
+
+.list-faq {
+  font-size: $font-size-18;
+
+  li:not(:last-child) { margin-bottom: $spacer-32; }
+
+  li {
+    p:first-child {
+      font-weight: 600;
+      margin-bottom: $spacer-4;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+
+}

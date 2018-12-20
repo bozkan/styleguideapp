@@ -1,26 +1,64 @@
-<h2 class="auth-header">Subscribe</h2>
+<div class="row mt-5">
+  <div class="col-md-8">
+    <div class="card">
+      <h2 class="h4 card-header">Start a Subscription</h2>
+      <div class="card-body">
+        <%= simple_form_for(@account, url:register_path, html:{class:'simple_form new_account form-unstyled', id:'form-payment'}) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= simple_form_for(@account, url:register_path, html:{class:'simple_form new_account form-unstyled', id:'form-payment'}) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <div class="form-inputs mb-4">
+            <fieldset>
+              <%= f.fields_for :owner do |owner| %>
+                <%= owner.input :email, input_html:{class:'form-control-lg', autofocus:true}, required: true %>
+                <%= owner.input :password, label:("Password" + (link_to "Show Password", '#', class:'toggle-show-password hidden', style:'font-size:90%;') ).html_safe, required:true, input_html: { autocomplete: 'new-password', class:'show-password form-control-lg' }, wrapper_html:{ class:'with-toggle-password'}  %>
+              <% end %>
+            </fieldset>
+            <%= render 'partials/stripe_fields' %>
+            <%= f.fields_for :subscription do |subscription| %>
+              <%= subscription.input :subscription_plan_id, as: :hidden, input_html:{value:SubscriptionPlan.first.id} %>
+            <% end %>
+            <%= f.input :newsletter, as: :boolean, wrapper: :custom_boolean, label:'Notify me of updates and announcements via email.', wrapper_html:{class:'text-muted mb-1 font-size-16'} %>
+            <%= f.input :terms, as: :boolean, wrapper: :custom_boolean, label:'I understand the terms and conditions.', wrapper_html:{class:'text-muted mb-1 font-size-16'}, required:true %>
+          </div>
 
-  <div class="form-inputs mb-4">
-    <fieldset>
-      <%= f.fields_for :owner do |owner| %>
-        <%= owner.input :email, input_html:{class:'form-control-lg', autofocus:true}, required: true %>
-        <%= owner.input :password, label:("Password" + (link_to "Show Password", '#', class:'toggle-show-password hidden', style:'font-size:90%;') ).html_safe, required:true, input_html: { autocomplete: 'new-password', class:'show-password form-control-lg' }, wrapper_html:{ class:'with-toggle-password'}  %>
-      <% end %>
-    </fieldset>
-    <%= render 'partials/stripe_fields' %>
-    <%= f.fields_for :subscription do |subscription| %>
-      <%= subscription.input :subscription_plan_id, as: :hidden, input_html:{value:SubscriptionPlan.first.id} %>
-    <% end %>
-    <%= f.input :newsletter, as: :boolean, wrapper: :custom_boolean, label:'Notify me of updates and announcements via email.', wrapper_html:{class:'text-muted mb-1', style:'font-size:90%;line-height:24px;'} %>
-    <%= f.input :terms, as: :boolean, wrapper: :custom_boolean, label:'I understand the terms and conditions.', wrapper_html:{class:'text-muted mb-1', style:'font-size:90%;line-height:22px;'}, required:true %>
+          <div class="form-actions">
+            <%= f.button :submit, value:'Start Subscription', class:'btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <hr class="mt-5 mb-4">
+
+    <ul class="list-unstyled list-faq">
+      <li>
+        <p>Is there a free plan?</p>
+        <p>No.</p>
+      </li>
+      <li>
+        <p>Is there a free trial?</p>
+        <p>Nope.</p>
+      </li>
+      <li>
+        <p>Can I cancel at anytime?</p>
+        <p>Yes.</p>
+      </li>
+      <li>
+        <p>Are you this boring in real life?</p>
+        <p>No! 😂 We just like to keep things simple.</p>
+      </li>
+    </ul>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, value:'Start Subscription', class:'btn-primary' %>
+  <div class="col-md-4">
+    <div class="card-body">
+      <p class="font-size-48 line-height-48 d-flex align-items-start my-3">$7<span class="ml-1 color-neutral-6 font-size-18 line-height-24">/ per month</span></p>
+      <ul class="list-unstyled list-check">
+        <li><%= octicon('check', height:20) %> unlimited brands</li>
+        <li><%= octicon('check', height:20) %> unlimited collaborators</li>
+        <li><%= octicon('check', height:20) %> custom domain support</li>
+      </ul>
+    </div>
   </div>
-<% end %>
+</div>
 <%= render 'partials/stripe' %>

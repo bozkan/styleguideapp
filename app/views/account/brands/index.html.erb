@@ -1,5 +1,5 @@
 <div class="page-header">
-  <div class="header-body">
+  <div class="header-body with-tabs">
     <div class="row align-items-center">
       <div class="col">
         <p class="mb-1 text-muted font-size-16"><%= link_to 'Account', account_path %> / Brands</p>
@@ -9,6 +9,7 @@
         <%= link_to 'Add Brand', new_account_brand_path, class:'btn btn-primary' %>
       </div>
     </div>
+        <%= render 'account/menu' %>
   </div>
 </div>
 

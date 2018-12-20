@@ -13,5 +13,10 @@ module Styleguideapp
     config.time_zone = 'Eastern Time (US & Canada)'
     config.active_record.default_timezone = :utc # Or :utc
 		config.eager_load_paths += %W(#{config.root}/lib)
+
+    env_file = File.join(Rails.root, 'config', 'local_env.yml')
+    YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value
+    end if File.exists?(env_file)
   end
 end

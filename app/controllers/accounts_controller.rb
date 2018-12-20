@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   before_action :authenticate_user!, :set_account, :authenticate_owner
 
   def index
-
+    @payments = @account.payments.order(created_at: :desc)
   end
 
   private

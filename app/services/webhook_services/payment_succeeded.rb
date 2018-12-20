@@ -5,8 +5,8 @@ module WebhookServices
     def initialize(params)
       @event                 = params[:event]
       @invoice               = @event.data.object
-      @subscription        ||= Subscription.find_by_subscription_merchant_id(@invoice.subscription)
-      @user                ||= @subscription.user
+      @subscription        ||= Subscription.find_by_stripe_id(@invoice.subscription)
+      @account               = @subscription.account
       @stripe_subscription ||= StripeServices::RetrieveSubscription.new({subscription_id:@invoice.subscription}).call
     end
 
@@ -23,7 +23,7 @@ module WebhookServices
 
     private
 
-      attr_reader :event, :invoice, :subscription, :stripe_subscription, :user
+      attr_reader :event, :invoice, :subscription, :stripe_subscription, :account
 
       def update_failed_payment
         last_failed_payment.update_attributes(payment_params)
@@ -43,7 +43,6 @@ module WebhookServices
           status: 'active',
           expiration:subscription_expiration
         )
-        set_commission_group_from_plan
       end
 
       def subscription_expiration
@@ -53,19 +52,12 @@ module WebhookServices
       def payment_params
         {
           paid:true,
-          amount: (invoice.amount_paid || 0),
-          user: subscription.user,
-          transaction_id: invoice.charge
+          amount_cents: (invoice.amount_paid || 0),
+          transaction_id: invoice.charge,
+          account: account
         }
       end
 
-      def set_commission_group_from_plan
-       user.info.update_attributes(commission_group_id: subscription.plan.commission_group_id) if user_commission_group_updateable?
-     end
-
-     def user_commission_group_updateable?
-       (user.try(:commission_group).try(:id) || 1) < subscription.plan.commission_group_id
-     end
   end
 
 end

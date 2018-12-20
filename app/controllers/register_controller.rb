@@ -1,7 +1,5 @@
 class RegisterController < ApplicationController
 
-  layout 'auth'
-
   before_action :redirect_register, if: :user_signed_in?
   skip_before_action :redirect_public
   http_basic_authenticate_with name: 'beta', password: '1234', if: :beta?

@@ -44,20 +44,11 @@
   </head>
 
   <body>
-    <div class="sticky-top px-3 py-2 border-bottom transparent-header mb-4">
-      <div class="container md d-flex align-items-center">
-        <%= link_to root_path do %>
-          <img src="https://d28lxayvntpz3s.cloudfront.net/site-assets/logos/sg-logo.png" style="max-width:175px;">
-        <% end %>
-        <ul class="nav ml-auto mt-0">
-          <li class="nav-item"></li>
-        </ul>
+    <div class="home-container">
+      <div class="home-container--inner bg-white box-shadow-5">
+        <%= yield %>
       </div>
     </div>
-    <main class="container">
-      <%= yield %>
-    </main>
     <%= render 'partials/notice' %>
-    <%= render 'partials/footer' %>
   </body>
 </html>
